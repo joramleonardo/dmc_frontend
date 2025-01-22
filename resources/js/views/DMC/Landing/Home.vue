@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <section class="section first-section">
             <div class="container-fluid">
                 <div class="masonry-blog clearfix">

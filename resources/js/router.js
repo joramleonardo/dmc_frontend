@@ -38,6 +38,8 @@ import Landing_SingleVideo from './views/DMC/Landing/SingleVideo.vue'; //Single 
 import Landing_SinglePhoto from './views/DMC/Landing/SinglePhoto.vue'; //Single Photo
 
 
+import _Home from './views/DMC/Landing/_Home.vue';
+import _Photos from './views/DMC/Landing/_Photos.vue';
 
 
 Vue.use(Router);
@@ -48,6 +50,16 @@ const routes = [
         path: '/login',
         name: 'login',
         component: Login
+    },
+    {
+        path: '/_home',
+        name: '_home',
+        component: _Home
+    },
+    {
+        path: '/_photos',
+        name: '_photos',
+        component: _Photos
     },
     {
         path: '/',

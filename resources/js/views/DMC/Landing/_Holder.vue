@@ -12,7 +12,7 @@
             <Search />
             <TopBar />
             <LogoBar />
-            <Header />
+            <!-- <Header /> -->
 
             <router-view> </router-view>
         </div>

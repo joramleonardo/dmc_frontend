@@ -367,10 +367,16 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link color-pink-hover" href="blog-category-01.html">Events</a>
+                                <!-- <a class="nav-link color-pink-hover" href="blog-category-01.html">Events</a> -->
+                                <router-link to="/events" class="nav-link color-grey-hover">
+                                    Events
+                                </router-link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link color-red-hover" href="blog-category-02.html">Photos</a>
+                                <!-- <a class="nav-link color-red-hover" href="blog-category-02.html">Photos</a> -->
+                                <router-link to="/photos" class="nav-link color-grey-hover">
+                                    Photos
+                                </router-link>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link color-red-hover" href="blog-category-02.html">Coverages</a>
