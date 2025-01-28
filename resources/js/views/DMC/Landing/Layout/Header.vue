@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <!-- <div> -->
         <header class="header">
             <div class="container">
                 <nav class="navbar navbar-inverse navbar-toggleable-md">
@@ -9,7 +9,9 @@
                     <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link color-pink-hover" href="index.html">Home</a>
+                                <router-link to="/home" class="nav-link color-grey-hover">
+                                    Home
+                                </router-link>
                             </li>
                             <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
@@ -367,31 +369,29 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <!-- <a class="nav-link color-pink-hover" href="blog-category-01.html">Events</a> -->
                                 <router-link to="/events" class="nav-link color-grey-hover">
                                     Events
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <!-- <a class="nav-link color-red-hover" href="blog-category-02.html">Photos</a> -->
                                 <router-link to="/photos" class="nav-link color-grey-hover">
                                     Photos
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link color-red-hover" href="blog-category-02.html">Coverages</a>
+                                <router-link to="/coverages" class="nav-link color-grey-hover">
+                                    Coverages
+                                </router-link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link color-grey-hover" href="/home">
-                                <!-- <router-link to="/home" class="nav-link color-grey-hover"> -->
+                                <router-link to="/contact" class="nav-link color-grey-hover">
                                     Contact
-                                <!-- </router-link> -->
-                                </a>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
                 </nav>
-            </div><!-- end container -->
-        </header><!-- end header -->
-    </div>
+            </div>
+        </header>
+    <!-- </div> -->
 </template>

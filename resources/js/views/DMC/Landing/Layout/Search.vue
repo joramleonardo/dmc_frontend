@@ -11,7 +11,7 @@
     </div><!-- end top-search -->
 </template>
 
-<style>
+<style scoped>
     form.form-inline .form-control::placeholder {
         color: white !important;
         opacity: 1; /* Ensure full visibility */

@@ -1,6 +1,6 @@
 
 <template>
-    <body>
+    <div>
 
         <!-- LOADER -->
         <div id="preloader">
@@ -9,10 +9,10 @@
         <!-- END LOADER -->
 
         <div id="wrapper">
-            <Search />
+            <!-- <Search />
             <TopBar />
-            <LogoBar />
-            <!-- <Header /> -->
+            <LogoBar /> -->
+            <Header />
 
             <router-view> </router-view>
         </div>
@@ -30,23 +30,21 @@
                 <router-view> </router-view>
             </div>
         </div> -->
-    </body>
+    </div>
 </template>
 
 <script>
-    import Search from './Layout/Search.vue';
-    import TopBar from './Layout/TopBar.vue';
-    import LogoBar from './Layout/Logo.vue';
+    // import Search from './Layout/Search.vue';
+    // import TopBar from './Layout/TopBar.vue';
+    // import LogoBar from './Layout/Logo.vue';
     import Header from './Layout/Header.vue';
-    import Navbar from './Layout/Navbar.vue';
 
     export default { 
         components: {
-            Search,
-            TopBar,
-            LogoBar,
-            Header,
-            Navbar
+            // Search,
+            // TopBar,
+            // LogoBar,
+            Header
         },
         data(){
             return {

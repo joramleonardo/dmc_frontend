@@ -29,10 +29,16 @@
 
         <!-- Colors for this template -->
         <link href="custom/css/colors.css" rel="stylesheet">
-
+        
+        <!-- <style>
+            .container {
+                background: red;
+            }
+        </style> -->
     </head>
     <body> 
         <div id="app"></div>
+      
         <script src="{{ asset('js/app.js') }}"> </script>
         
         
@@ -43,6 +49,7 @@
         <script src="custom/js/bootstrap.min.js"></script>
         <script src="custom/js/masonry.js"></script>
         <script src="custom/js/custom.js"></script>
+
 
     </body>
 </html>

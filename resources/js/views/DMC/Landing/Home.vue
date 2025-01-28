@@ -80,7 +80,7 @@
                                 <div class="blog-meta big-meta col-md-8">
                                     
                                     <h4><a href="single.html" title="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh.</p>
                                     <small><a href="blog-category-01.html" title="">Category</a></small>
                                     <small><a href="single.html" title="">DATE</a></small>
                                     <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
@@ -101,7 +101,7 @@
 
                                 <div class="blog-meta big-meta col-md-8">
                                     <h4><a href="single.html" title="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh.</p>
                                     <small><a href="blog-category-01.html" title="">Category</a></small>
                                     <small><a href="single.html" title="">DATE</a></small>
                                     <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
@@ -122,7 +122,7 @@
 
                                 <div class="blog-meta big-meta col-md-8">
                                     <h4><a href="single.html" title="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh.</p>
                                     <small><a href="blog-category-01.html" title="">Category</a></small>
                                     <small><a href="single.html" title="">DATE</a></small>
                                     <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
@@ -143,7 +143,7 @@
 
                                 <div class="blog-meta big-meta col-md-8">
                                     <h4><a href="single.html" title="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh.</p>
                                     <small><a href="blog-category-01.html" title="">Category</a></small>
                                     <small><a href="single.html" title="">DATE</a></small>
                                     <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
@@ -164,7 +164,7 @@
 
                                 <div class="blog-meta big-meta col-md-8">
                                     <h4><a href="single.html" title="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh.</p>
                                     <small><a href="blog-category-01.html" title="">Category</a></small>
                                     <small><a href="single.html" title="">DATE</a></small>
                                     <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
