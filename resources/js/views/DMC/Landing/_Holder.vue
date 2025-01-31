@@ -2,11 +2,9 @@
 <template>
     <div>
 
-        <!-- LOADER -->
-        <div id="preloader">
+        <!-- <div id="preloader">
             <img class="preloader" src="custom/images/loader.gif" alt="">
-        </div><!-- end loader -->
-        <!-- END LOADER -->
+        </div> -->
 
         <div id="wrapper">
             <!-- <Search />

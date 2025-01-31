@@ -28,6 +28,7 @@ import Video_Add from './views/DMC/Admin/_Admin_EventAdd.vue';
 import Video_List from './views/DMC/Admin/_Admin_EventAdd.vue';
 
 
+import Landing_Main from './views/DMC/Landing/_MainLanding.vue';
 import Landing_Holder from './views/DMC/Landing/_Holder.vue';
 import Landing_Home from './views/DMC/Landing/Home.vue';
 import Landing_Events from './views/DMC/Landing/Events.vue'; //Album
@@ -63,6 +64,11 @@ const routes = [
     },
     {
         path: '/',
+        name: '',
+        component: Landing_Main
+    },
+    {
+        path: '/holder',
         name: '',
         component: Landing_Holder,
         children: [
@@ -107,6 +113,7 @@ const routes = [
 ];
 
 const router = new Router({
+    mode: 'history', // <---- Change from hash to history mode
     routes: routes,
     linkActiveClass: 'active'
 });
