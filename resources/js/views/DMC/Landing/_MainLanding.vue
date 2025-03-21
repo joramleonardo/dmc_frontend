@@ -1,543 +1,500 @@
 
-<template>
-    <div>
-        <!-- <div id="preloader">
-            <img class="preloader" src="custom/images/loader.gif" alt="">
-        </div> -->
-
-        <div id="wrapper">
-            <header class="header">
-                <div class="container">
-                    <nav class="navbar navbar-inverse navbar-toggleable-md">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <router-link to="/home" class="nav-link color-grey-hover">
-                                        Home
-                                    </router-link>
-                                </li>
-                                <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
-                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-                                    <ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">
-                                        <li>
-                                            <div class="mega-menu-content clearfix">
-                                                <div class="tab">
-                                                    <button class="tablinks active" onclick="openCategory(event, 'cat01')">Anniversary</button>
-                                                    <button class="tablinks" onclick="openCategory(event, 'cat02')">Awarding Ceremonies</button>
-                                                    <button class="tablinks" onclick="openCategory(event, 'cat03')">Convention</button>
-                                                    <button class="tablinks" onclick="openCategory(event, 'cat04')">Exhibits</button>
-                                                    <button class="tablinks" onclick="openCategory(event, 'cat05')">Forum</button>
-                                                    <button class="tablinks">More...</button>
-                                                </div>
-
-                                                <div class="tab-details clearfix">
-                                                    <div id="cat01" class="tabcontent active">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_01.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Morbi bibendum augue augue tempor massa</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_02.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Morbi bibendum augue augue tempor massa</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_03.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Morbi bibendum augue augue tempor massa</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_04.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Morbi bibendum augue augue tempor massa</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-                                                        </div><!-- end row -->
-                                                    </div>
-                                                    <div id="cat02" class="tabcontent">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_05.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Donec mollis ante ac libero porttitor pulvinar</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_06.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Donec mollis ante ac libero porttitor pulvinar</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_07.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Donec mollis ante ac libero porttitor pulvinar</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_08.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Donec mollis ante ac libero porttitor pulvinar</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-                                                        </div><!-- end row -->
-                                                    </div>
-                                                    <div id="cat03" class="tabcontent">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_09.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Proin varius sagittis diam ac facilisis</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_11.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Proin varius sagittis diam ac facilisis</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_12.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Proin varius sagittis diam ac facilisis</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_13.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Proin varius sagittis diam ac facilisis</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-                                                        </div><!-- end row -->
-                                                    </div>
-                                                    <div id="cat04" class="tabcontent">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_14.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Nullam finibus diam mauris auctor velit</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_15.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Nullam finibus diam mauris auctor velit</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_16.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Nullam finibus diam mauris auctor velit</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_17.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Nullam finibus diam mauris auctor velit</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-                                                        </div><!-- end row -->
-                                                    </div>
-                                                    <div id="cat05" class="tabcontent">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_18.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Sed eu lacus in sapien mattis tristique ut vel mi</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_19.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Sed eu lacus in sapien mattis tristique ut vel mi</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_20.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Sed eu lacus in sapien mattis tristique ut vel mi</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="single.html" title="">
-                                                                            <img src="custom/upload/menu_21.jpg" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <!-- <span class="menucat">Spa</span> -->
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="single.html" title="">Sed eu lacus in sapien mattis tristique ut vel mi</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
-                                                        </div><!-- end row -->
-                                                    </div>
-                                                </div><!-- end tab-details -->
-                                            </div><!-- end mega-menu-content -->
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/events" class="nav-link color-grey-hover">
-                                        Events
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/photos" class="nav-link color-grey-hover">
-                                        Photos
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/coverages" class="nav-link color-grey-hover">
-                                        Coverages
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link to="/contact" class="nav-link color-grey-hover">
-                                        Contact
-                                    </router-link>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </header>
-
-            <section class="section first-section">
-                <div class="container-fluid">
-                    <div class="masonry-blog clearfix">
-                        <div class="left-side">
-                            <div class="masonry-box post-media">
-                                <!-- http://dmc.stii.local/storage/images/UvpYDajgFf5fDqLEcZ8oVtwMtqpKj6q0ElzkiwqN.png -->
-                                <img src="custom/stii/a1.jpg" alt="" class="img-fluid">
-                                <div class="shadoweffect">
-                                    <div class="shadow-desc">
-                                        <div class="blog-meta">
-                                            <span class="bg-aqua"><a href="blog-category-01.html" title="">EVENT CATEGORY</a></span>
-                                            <h4><a href="single.html" title="">Event Title</a></h4>
-                                            <small><a href="single.html" title="">DATE</a></small>
-                                            <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
-                                        </div><!-- end meta -->
-                                    </div><!-- end shadow-desc -->
-                                </div><!-- end shadow -->
-                            </div><!-- end post-media -->
-                        </div><!-- end left-side -->
-
-                        <div class="center-side">
-                            <div class="masonry-box post-media">
-                                <img src="custom/stii/b1.jpg" alt="" class="img-fluid">
-                                <div class="shadoweffect">
-                                    <div class="shadow-desc">
-                                        <div class="blog-meta">
-                                            <span class="bg-aqua"><a href="blog-category-01.html" title="">EVENT CATEGORY</a></span>
-                                            <h4><a href="single.html" title="">Event Title</a></h4>
-                                            <small><a href="single.html" title="">DATE</a></small>
-                                            <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
-                                        </div><!-- end meta -->
-                                    </div><!-- end shadow-desc -->
-                                </div><!-- end shadow -->
-                            </div><!-- end post-media -->
-
-
-                        </div><!-- end left-side -->
-
-                        <div class="right-side hidden-md-down">
-                            <div class="masonry-box post-media">
-                                <img src="custom/stii/e1.jpg" alt="" class="img-fluid">
-                                <div class="shadoweffect">
-                                    <div class="shadow-desc">
-                                        <div class="blog-meta">
-                                            <span class="bg-aqua"><a href="blog-category-01.html" title="">EVENT CATEGORY</a></span>
-                                            <h4><a href="single.html" title="">Event Title</a></h4>
-                                            <small><a href="single.html" title="">DATE</a></small>
-                                            <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
-                                        </div><!-- end meta -->
-                                    </div><!-- end shadow-desc -->
-                                </div><!-- end shadow -->
-                            </div><!-- end post-media -->
-                        </div><!-- end right-side -->
-                    </div><!-- end masonry -->
-                </div>
-            </section>
-
-            <section class="section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <div class="blog-list clearfix">
-                                <div class="section-title">
-                                    <h3 class="color-red"><a style="text-decoration: none;">RECENT EVENTS</a></h3>
-                                </div>
-
-                                <div class="blog-box row">
-                                    <div class="col-md-4">
-                                        <div class="post-media">
-                                            <a href="single.html" title="">
-                                                <img src="custom/stii/a2.jpg" alt="" class="img-fluid">
-                                                <div class="hovereffect"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="blog-meta big-meta col-md-8">
-                                        
-                                        <h4><a href="single.html" title="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh.</p>
-                                        <small><a href="blog-category-01.html" title="">Category</a></small>
-                                        <small><a href="single.html" title="">DATE</a></small>
-                                        <small><a href="blog-author.html" title="">ORGANIZING AGENCY</a></small>
-                                    </div>
-                                </div>
-
-                                <hr class="invis">
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-3">
-
-                            <div class="section-title">
-                                <h3 class="color-red"><a style="text-decoration: none;">UPCOMING EVENTS</a></h3>
-                            </div>
-                            <div class="sidebar">
-                                <div class="widget">
-                                    <div class="banner-spot clearfix">
-                                        <div class="banner-img">
-                                            <img src="custom/stii/upcoming1.jpg" alt="" class="img-fluid">
-                                        </div>
-                                    </div>
-                                    
-
-                                    <div class="banner-spot clearfix" style="margin-top: 10px;">
-                                        <div class="banner-img">
-                                            <img src="custom/stii/upcoming2.jpg" alt="" class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-    </div>
-</template>
 
 <script>
     import Header from './Layout/Header.vue';
+    import * as assets_service from '../../../services/assets_service.js';
 
-    export default { 
+    import $ from 'jquery';
+    import 'slick-carousel/slick/slick.css';
+    import 'slick-carousel/slick/slick-theme.css';
+    import 'slick-carousel';
+
+    export default {
         components: {
             Header
         },
         data(){
             return {
+                list_featuredEvents: [],
+                list_recentEvents: [],
             }
         },
         mounted(){
+            this.loadAllEvents();
+            this.loadRecentEvents();
         },
         methods:{
+
+            async loadAllEvents() {
+                try {
+                    const response = await assets_service.getFeaturedEvents();
+                    this.list_featuredEvents = response.data; // Store the 3 event results
+                    console.log(this.list_featuredEvents);
+                        this.$nextTick(() => {
+                        this.reinitializeSlider(); // Fix slider after reload
+                    });
+
+                } catch (error) {
+                    console.error("API Error:", error);
+                }
+            },
+            async loadRecentEvents() {
+                    try {
+                        const response = await assets_service.getRecentEvents();
+                        this.list_recentEvents = response.data; // Store the recent events
+                        console.log("===");
+                        console.log(this.list_recentEvents);
+                    } catch (error) {
+                        console.error("API Error:", error);
+                    }
+                },
+
+
+
+
+
+
+            getClass(index) {
+                const classes = ["left-side", "center-side", "right-side hidden-md-down"];
+                return classes[index] || "default-class";
+            },
+            formatDate(dateString) {
+                if (!dateString) return ""; // Handle empty values
+
+                const options = { day: '2-digit', month: 'long', year: 'numeric' };
+                return new Intl.DateTimeFormat('en-GB', options).format(new Date(dateString));
+            },
+            reinitializeSlider() {
+                const slider = $(this.$refs.slider);
+
+                // ✅ Destroy existing instance to prevent duplication
+                if (slider.hasClass('slick-initialized')) {
+                    slider.slick('unslick');
+                }
+
+                // ✅ Reinitialize Slick Carousel
+                slider.slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    dots: true,
+                    arrows: false,
+                    infinite: true
+                });
+            }
         }
     }
 </script>
+
+
+<template>
+    <div >
+
+        <!-- Preloader Start -->
+        <div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="preloader-circle"></div>
+                    <div class="preloader-img pere-text">
+                        <img src="myCustom/img/logo/logo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preloader Start -->
+        <header>
+            <!-- Header Start -->
+            <div class="header-area">
+                <div class="main-header ">
+                    <!-- <div class="header-top black-bg d-none d-sm-block">
+                        <div class="container">
+                            <div class="col-xl-12">
+                                <div class="row d-flex justify-content-between align-items-center">
+                                    <div class="header-info-left">
+                                        <ul>
+                                            <li class="title"><span class="flaticon-energy"></span> trending-title</li>
+                                            <li>Class property employ ancho red multi level mansion</li>
+                                        </ul>
+                                    </div>
+                                    <div class="header-info-right">
+                                        <ul class="header-date">
+                                            <li><span class="flaticon-calendar"></span> +880166 253 232</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-mid gray-bg">
+                        <div class="container">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-xl-3 col-lg-3 col-md-3 d-none d-md-block">
+                                    <div class="logo">
+                                        <a href="index.html"><img src="myCustom/img/logo/logo.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-9">
+                                    <div class="header-banner f-right ">
+                                        <img src="myCustom/img/gallery/header_card.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="header-bottom header-sticky">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-xl-8 col-lg-8 col-md-12 header-flex">
+                                    <!-- sticky -->
+                                    <div class="sticky-logo">
+                                        <a href="index.html">
+                                            <img src="myCustom/img/logo/logo.png" alt="">
+                                        </a>
+                                    </div>
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-md-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="#">Category</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="blog.html">Anniversaries</a></li>
+                                                        <li><a href="blog_details.html">Awarding Ceremonies</a></li>
+                                                        <li><a href="elements.html">Convention</a></li>
+                                                        <li><a href="elements.html">Exhibits</a></li>
+                                                        <li><a href="elements.html">Forums</a></li>
+                                                    </ul>
+                                                </li>
+
+                                                <li><a href="about.html">Events</a></li>
+                                                <li><a href="categori.html">Photos</a></li>
+                                                <li><a href="latest_news.html">coverages</a></li>
+                                                <li><a href="contact.html">Contact</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4">
+                                    <div class="header-right f-right d-none d-lg-block">
+                                        <!-- Heder social -->
+                                        <!-- <ul class="header-social">
+                                            <li><a href="https://www.fb.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <li> <a href="#"><i class="fab fa-youtube"></i></a></li>
+                                        </ul> -->
+                                        <!-- Search Nav -->
+                                        <div class="nav-search search-switch">
+                                            <i class="fa fa-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Mobile Menu -->
+                                <div class="col-12">
+                                    <div class="mobile_menu d-block d-md-none"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header End -->
+        </header>
+
+        <main>
+            <!-- Trending Area Start -->
+            <div class="trending-area fix pt-25 gray-bg">
+                <div class="container">
+                    <div class="trending-main">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Trending Top -->
+                                <div class="slider-active" ref="slider">
+                                    <div v-for="(event, index) in list_featuredEvents.slice(0, 3)" :key="index" class="single-slider">
+                                        <div class="trending-top mb-30">
+                                            <div class="trend-top-img">
+                                                <img :src="'/storage/images/' + event.photo" alt="">
+                                                <div class="trend-top-cap">
+                                                    <h2>
+                                                        <a href="single.html" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">
+                                                            {{ event.event_title }}
+                                                        </a>
+                                                    </h2>
+                                                    <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">
+                                                        <strong class="trend-category">{{ event.event_category }}</strong>
+                                                        by {{ event.organizing_agency }} - {{ formatDate(event.event_date) }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Trending Area End -->
+
+            <!-- Whats New Start -->
+            <section class="whats-news-area pt-50 pb-20 gray-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mb-5 mb-lg-0">
+                            <div class="blog_left_sidebar">
+                                <article class="blog_item" v-for="(event, index) in list_recentEvents.slice(0, 5)" :key="index">
+                                    <div class="blog_item_img">
+                                        <img class="card-img rounded-0" :src="'/storage/images/' + event.photo" alt="">
+                                        <a href="#" class="blog_item_date">
+                                            <h3>15</h3>
+                                            <p>Jan</p>
+                                        </a>
+                                    </div>
+
+                                    <div class="blog_details">
+                                        <a class="d-inline-block" href="single-blog.html">
+                                            <h2>{{ event.event_title }}</h2>
+                                        </a>
+                                        <!-- <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                                            he earth it first without heaven in place seed it second morning saying.</p> -->
+                                        <ul class="blog-info-link">
+                                            <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                                <!-- <article class="blog_item">
+                                    <div class="blog_item_img">
+                                        <img class="card-img rounded-0" src="myCustom/img/blog/single_blog_2.png" alt="">
+                                        <a href="#" class="blog_item_date">
+                                            <h3>15</h3>
+                                            <p>Jan</p>
+                                        </a>
+                                    </div>
+
+                                    <div class="blog_details">
+                                        <a class="d-inline-block" href="single-blog.html">
+                                            <h2>Google inks pact for new 35-storey office</h2>
+                                        </a>
+                                        <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                                            he earth it first without heaven in place seed it second morning saying.</p>
+                                        <ul class="blog-info-link">
+                                            <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                                <article class="blog_item">
+                                    <div class="blog_item_img">
+                                        <img class="card-img rounded-0" src="myCustom/img/blog/single_blog_3.png" alt="">
+                                        <a href="#" class="blog_item_date">
+                                            <h3>15</h3>
+                                            <p>Jan</p>
+                                        </a>
+                                    </div>
+
+                                    <div class="blog_details">
+                                        <a class="d-inline-block" href="single-blog.html">
+                                            <h2>Google inks pact for new 35-storey office</h2>
+                                        </a>
+                                        <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                                            he earth it first without heaven in place seed it second morning saying.</p>
+                                        <ul class="blog-info-link">
+                                            <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                                <article class="blog_item">
+                                    <div class="blog_item_img">
+                                        <img class="card-img rounded-0" src="myCustom/img/blog/single_blog_4.png" alt="">
+                                        <a href="#" class="blog_item_date">
+                                            <h3>15</h3>
+                                            <p>Jan</p>
+                                        </a>
+                                    </div>
+
+                                    <div class="blog_details">
+                                        <a class="d-inline-block" href="single-blog.html">
+                                            <h2>Google inks pact for new 35-storey office</h2>
+                                        </a>
+                                        <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                                            he earth it first without heaven in place seed it second morning saying.</p>
+                                        <ul class="blog-info-link">
+                                            <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                                <article class="blog_item">
+                                    <div class="blog_item_img">
+                                        <img class="card-img rounded-0" src="myCustom/img/blog/single_blog_5.png" alt="">
+                                        <a href="#" class="blog_item_date">
+                                            <h3>15</h3>
+                                            <p>Jan</p>
+                                        </a>
+                                    </div>
+
+                                    <div class="blog_details">
+                                        <a class="d-inline-block" href="single-blog.html">
+                                            <h2>Google inks pact for new 35-storey office</h2>
+                                        </a>
+                                        <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                                            he earth it first without heaven in place seed it second morning saying.</p>
+                                        <ul class="blog-info-link">
+                                            <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                        </ul>
+                                    </div>
+                                </article> -->
+
+                                <nav class="blog-pagination justify-content-center d-flex">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a href="#" class="page-link" aria-label="Previous">
+                                                <i class="ti-angle-left"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link">1</a>
+                                        </li>
+                                        <li class="page-item active">
+                                            <a href="#" class="page-link">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link" aria-label="Next">
+                                                <i class="ti-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+
+                            <!-- Most Recent Area -->
+                            <div class="most-recent-area">
+                                <!-- Section Tittle -->
+                                <div class="small-tittle mb-20">
+                                    <h4>Upcoming Events</h4>
+                                </div>
+                                <!-- Details -->
+                                <div class="most-recent mb-40">
+                                    <div class="most-recent-img">
+                                        <img src="myCustom/img/gallery/most_recent.png" alt="">
+                                        <div class="most-recent-cap">
+                                            <span class="bgbeg">Vogue</span>
+                                            <h4><a href="latest_news.html">What to Wear: 9+ Cute Work <br>
+                                                Outfits to Wear This.</a></h4>
+                                            <p>Jhon  |  2 hours ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single -->
+                                <div class="most-recent-single">
+                                    <div class="most-recent-images">
+                                        <img src="myCustom/img/gallery/most_recent1.png" alt="">
+                                    </div>
+                                    <div class="most-recent-capt">
+                                        <h4><a href="latest_news.html">Scarlett’s disappointment at latest accolade</a></h4>
+                                        <p>Jhon  |  2 hours ago</p>
+                                    </div>
+                                </div>
+                                <!-- Single -->
+                                <div class="most-recent-single">
+                                    <div class="most-recent-images">
+                                        <img src="myCustom/img/gallery/most_recent2.png" alt="">
+                                    </div>
+                                    <div class="most-recent-capt">
+                                        <h4><a href="latest_news.html">Most Beautiful Things to Do in Sidney with Your BF</a></h4>
+                                        <p>Jhon  |  3 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Whats New End -->
+
+        </main>
+    </div>
+</template>
+
+<style scoped>
+    .trend-top-cap {
+        position: absolute;
+        bottom: 10%;
+        left: 5%;
+        width: 95%;
+        background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .trend-top-cap h2 a{
+        font-size: 22px; /* Reduce font size */
+        line-height: 1.3;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 5px;
+    }
+
+    .trend-top-cap p {
+        font-size: 14px;
+        color: #ccc;
+        margin-bottom: 0;
+        display: flex; /* Makes everything in one line */
+        align-items: center;
+        gap: 10px; /* Adds spacing between elements */
+    }
+
+    .trend-category {
+        background: #ff4d4d; /* Red background */
+        color: white;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block; /* Ensures it remains inline */
+    }
+
+    .trend-top-cap span {
+        font-size: 12px; /* Category smaller */
+        padding: 5px 10px;
+        background: #ff4d4d;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .trend-top-img img {
+        width: 100%;
+        height: 500px; /* Adjust height */
+        object-fit: cover; /* Ensures full coverage */
+    }
+
+    @media (max-width: 768px) {
+        .trend-top-cap h2 {
+            font-size: 18px; /* Smaller title on mobile */
+        }
+
+        .trend-top-cap {
+            bottom: 5%;
+            padding: 10px;
+        }
+    }
+
+    .blog_details, .most-recent-area {
+        background-color: white;
+        box-shadow: rgba(221, 221, 221, 0.3) 0px 10px 20px 0px;
+        border-radius: 7px;
+    }
+
+
+
+</style>
