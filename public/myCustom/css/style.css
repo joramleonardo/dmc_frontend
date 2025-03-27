@@ -362,6 +362,11 @@ hr {
 	padding-bottom: 120px
 }
 
+.section-padding-single-event {
+	padding-top: 50px;
+	padding-bottom: 120px
+}
+
 .separator {
 	border-top: 1px solid #f2f2f2
 }
@@ -3587,14 +3592,14 @@ hr {
 	font-size: 11px;
 	font-weight: 700;
 	line-height: 1;
-	margin-bottom: 15px;
+	margin-bottom: 1px;
 	display: inline-block
 }
 
 .whats-news-area .whats-right-single .whats-right-cap h4,
 .about-area2 .whats-right-single .whats-right-cap h4,
 .contact-section .whats-right-single .whats-right-cap h4 {
-	font-size: 16px;
+	/* font-size: 16px; */
 	font-weight: 700
 }
 
@@ -3633,7 +3638,7 @@ hr {
 .about-area2 .whats-right-single .whats-right-cap p,
 .contact-section .whats-right-single .whats-right-cap p {
 	color: #707b8e;
-	font-size: 12px;
+	font-size: 9px;
 	margin: 0;
 	line-height: 1
 }
@@ -5174,7 +5179,7 @@ hr {
 
 .blog_right_sidebar .widget_title {
 	font-size: 20px;
-	margin-bottom: 40px
+	/* margin-bottom: 40px */
 }
 
 .blog_right_sidebar .widget_title::after {

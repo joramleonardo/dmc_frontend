@@ -1,205 +1,354 @@
+
+
+<script>
+    import * as assets_service from '../../../services/assets_service.js';
+
+    import Header from './SectionHeader.vue';
+    import UpcomingEvents from './SectionUpcomingEvents.vue';
+
+    import $ from 'jquery';
+
+    export default {
+        components: {
+            Header,
+            UpcomingEvents
+        },
+        data(){
+            return {
+                album_id : this.$route.params.id,
+                list_eventDetails: [],
+                featuredPhoto: null,
+                selectedPhotoDetails: null,
+                selectedVideo: null,
+                activeItem: null,
+            }
+        },
+        mounted(){
+            this.loadEventDetails();
+        },
+        computed: {
+            mediaItems() {
+                const photos = this.list_eventDetails.photos || [];
+                const videos = this.list_eventDetails.videos || [];
+
+                const photoItems = photos.map(item => ({ ...item, media_type: 'photo' }));
+                const videoItems = videos.map(item => ({ ...item, media_type: 'video' }));
+
+                return [...photoItems, ...videoItems];
+            }
+        },
+        methods:{
+            async loadEventDetails() {
+                try {
+                    const response = await assets_service.getEventByAlbumId(this.album_id);
+                    this.list_eventDetails = response.data;
+
+                    if (this.list_eventDetails.photos && this.list_eventDetails.photos.length > 0) {
+                        this.featuredPhoto = this.list_eventDetails.photos[0].photo_fileName;
+                        this.selectedPhotoDetails = this.list_eventDetails.photos[0];
+                    }
+
+                    this.$nextTick(() => {
+                        this.reinitializePhotoSlider();
+                    });
+
+                } catch (error) {
+                    console.error("API Error:", error);
+                }
+            },
+            selectPhoto(photo) {
+                this.featuredPhoto = photo.photo_fileName;
+                this.selectedPhotoDetails = photo;
+            },
+
+            getVideoEmbedUrl(url) {
+                const videoIdMatch = url.match(/(?:youtube\.com.*(?:\/|v=)|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+                return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : url;
+            },
+            selectMedia(item) {
+                if (item.media_type === 'photo') {
+                    this.featuredPhoto = item.photo_fileName;
+                    this.selectedPhotoDetails = item;
+                    this.selectedVideo = null;
+                } else {
+                    this.featuredPhoto = null;
+                    this.selectedPhotoDetails = null;
+                    this.selectedVideo = item;
+                }
+            },
+            getYoutubeThumbnail(url) {
+                const videoIdMatch = url.match(/(?:youtube\.com.*(?:\/|v=)|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+                return videoIdMatch
+                    ? `https://img.youtube.com/vi/${videoIdMatch[1]}/hqdefault.jpg`
+                    : '';
+            },
+
+            reinitializePhotoSlider() {
+            const $slider = $(this.$refs.photoSlider);
+
+            if ($slider.hasClass('slick-initialized')) {
+                $slider.slick('unslick');
+            }
+
+            $slider.slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                arrows: false,
+                dots: true,
+                responsive: [
+                { breakpoint: 992, settings: { slidesToShow: 2 } },
+                { breakpoint: 768, settings: { slidesToShow: 1 } }
+                ]
+            });
+            }
+        }
+    }
+</script>
+
+
 <template>
-    
-    <div>
+    <div >
+        <header>
+            <Header />
+        </header>
 
-        <section class="section wb">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                        <div class="page-wrapper">
-                            <div class="blog-title-area">
-                                <ol class="breadcrumb hidden-xs-down">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Event</a></li>
-                                    <li class="breadcrumb-item active">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                </ol>
+        <main>
+            <section class="blog_area single-post-area section-padding-single-event">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 posts-list">
+                            <div class="single-post">
+                                <h2 class="event-title">
+                                    {{list_eventDetails.event_title}}
+                                </h2>
+                                <div class="feature-img">
+                                    <img
+                                        v-if="featuredPhoto"
+                                        class="img-fluid"
+                                        :src="'/storage/images/' + featuredPhoto"
+                                        alt="Featured Photo"
+                                    />
 
-                                <span class="color-aqua"><a href="blog-category-01.html" title="">CATEGORY</a></span>
-
-                                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-
-                                <div class="blog-meta big-meta">
-                                    <small><a href="single.html" title="">DATE</a></small>
-                                    <small><a href="blog-author.html" title="">VENUE</a></small>
-                                    <small><a href="blog-author.html" title="">AUTHOR</a></small>
-                                </div><!-- end meta -->
-
-                            </div><!-- end title -->
-
-                            <div class="single-post-media">
-                                <img src="custom/stii/a1.jpg" alt="" class="img-fluid">
-                            </div><!-- end media -->
-                            
-                            <div class="custombox prevnextpost clearfix">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="">
-                                            <a href="single.html">
-                                                <div>
-                                                    <img src="custom/stii/a2.jpg" alt="" class="img-fluid">
-                                                </div>
-                                            </a>
-                                        </div>
+                                    <div v-else-if="selectedVideo" class="video-wrapper">
+                                        <iframe
+                                        :src="getVideoEmbedUrl(selectedVideo.video_link)"
+                                        frameborder="0"
+                                        allowfullscreen
+                                        ></iframe>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="">
-                                            <a href="single.html">
-                                                <div>
-                                                    <img src="custom/stii/a3.jpg" alt="" class="img-fluid">
+                                </div>
+
+
+                                <div class="blog_details">
+
+                                    <!-- <ul class="blog-info-link mt-3 mb-4">
+                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                    </ul> -->
+                                    <div class="slider-wrapper">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="weekly2-news-active d-flex" ref="photoSlider">
+                                                    <div class="weekly2-single" v-for="(item, index) in mediaItems" :key="index">
+                                                        <div class="weekly2-img" @click="selectMedia(item)" style="cursor: pointer;">
+
+                                                            <img v-if="item.media_type === 'photo'"
+                                                                class="img-fluid" :src="'/storage/images/' + item.photo_fileName"
+                                                                :alt="item.photo_title || 'Event Photo'" />
+
+                                                            <div v-else class="video-thumb" style="position: relative;" >
+                                                                <img
+                                                                    class="img-fluid"
+                                                                    :src="getYoutubeThumbnail(item.video_link)"
+                                                                    alt="Video Thumbnail"
+                                                                />
+                                                                <div class="play-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 40px; color: white;">
+                                                                    ▶
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="weekly2-caption">
+                                                            <p>
+                                                            <span class="photo-category" v-if="item.media_type === 'photo'">
+                                                                PHOTO
+                                                            </span>
+                                                            <span class="photo-category" v-else>
+                                                                VIDEO
+                                                            </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="">
-                                            <a href="single.html">
-                                                <div>
-                                                    <img src="custom/stii/a4.jpg" alt="" class="img-fluid">
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="">
-                                            <a href="single.html">
-                                                <div>
-                                                    <img src="custom/stii/a2.jpg" alt="" class="img-fluid">
-                                                </div>
-                                            </a>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-
-                            <div class="blog-content" style="margin-top: 20px;">  
-                                <div class="pp">
-                                    <p>In lobortis pharetra mattis. Morbi nec nibh iaculis, ultrices nulla. Nunc velit ante, lacinia id tincidunt eget, faucibus nec nisl. In mauris purus, bibendum et gravida dignissim, venenatis commodo lacus. Duis consectetur quis nisi nec accumsan. Pellentesque enim velit, ut tempor turpis. Mauris felis neque, egestas in lobortis et,iaculis at nunc ac, rhoncus sagittis ipsum. </p>
-
-                                </div>
-
-                            </div>
-
-                            <div class="blog-title-area">
-                                <div class="tag-cloud-single">
-                                    <span>Tags</span>
-                                    <small><a href="#" title="">#TAG1</a></small>
-                                    <small><a href="#" title="">#TAG2</a></small>
-                                    <small><a href="#" title="">#TAG3</a></small>
-                                    <small><a href="#" title="">#TAG4</a></small>
-                                    <small><a href="#" title="">#TAG5</a></small>
-                                </div><!-- end meta -->
-                            </div><!-- end title -->
-
-
-
                         </div>
-                    </div>
-
-                    
-                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                        <div class="sidebar">
-                            <!-- <div class="widget">
-                                <h2 class="widget-title">Search</h2>
-                                <form class="form-inline search-form">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Search on the site">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div> -->
-
-                            <div class="widget">
-                                <h2 class="widget-title">Recent Events</h2>
-                                <div class="blog-list-widget">
-                                    <div class="list-group">
-                                        <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="custom/stii/a1.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Lorem ipsum dolor sit amet</h5>
-                                            </div>
-                                        </a>
-
-                                        <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="custom/stii/b1.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Morbi bibendum augue augue</h5>
-                                            </div>
-                                        </a>
-
-                                        <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 last-item justify-content-between">
-                                                <img src="custom/stii/c1.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Proin varius sagittis diam ac facilisis</h5>
-                                            </div>
-                                        </a>
-
-                                        <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="custom/stii/d1.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Donec vitae felis sed metus varius </h5>
-                                            </div>
-                                        </a>
-
-                                        <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 last-item justify-content-between">
-                                                <img src="custom/stii/e1.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Vestibulum placerat ac nisl in aliquet</h5>
-                                            </div>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="widget">
-                                <h2 class="widget-title">Event Categories</h2>
-                                <div class="link-widget">
-                                    <ul>
-                                        <li><a href="#">Assistant Secretaries <span>(21)</span></a></li>
-                                        <li><a href="#">Deputy Directors <span>(15)</span></a></li>
-                                        <li><a href="#">Directors <span>(31)</span></a></li>
-                                        <li><a href="#">Executive Director <span>(22)</span></a></li>
-                                        <li><a href="#">Group photo<span>(66)</span></a></li>
-                                        <li><a href="#">Launch/ Events/Activities <span>(11)</span></a></li>
-                                        <li><a href="#">Lecturers/Resource Speaker <span>(87)</span></a></li>
-                                        <li><a href="#">MOA/MOU signing <span>(11)</span></a></li>
-                                        <li><a href="#">Participants <span>(21)</span></a></li>
-                                        <li><a href="#">Portraits <span>(3)</span></a></li>
-                                        <li><a href="#">Product/Service <span>(15)</span></a></li>
-                                        <li><a href="#">Project visits <span>(10)</span></a></li>
-                                        <li><a href="#">Project/Program activities <span>(10)</span></a></li>
-                                        <li><a href="#">Regional Directors <span>(10)</span></a></li>
-                                        <li><a href="#">Others... <span>(10)</span></a></li>
-
-                                        <!-- <li><a href="#">Anniversary <span>(21)</span></a></li>
-                                        <li><a href="#">Awarding Ceremonies <span>(15)</span></a></li>
-                                        <li><a href="#">Conference <span>(31)</span></a></li>
-                                        <li><a href="#">Convention <span>(22)</span></a></li>
-                                        <li><a href="#">Exhibits <span>(66)</span></a></li>
-                                        <li><a href="#">Forum <span>(11)</span></a></li>
-                                        <li><a href="#">MOA Signing <span>(87)</span></a></li>
-                                        <li><a href="#">NSTW <span>(11)</span></a></li>
-                                        <li><a href="#">NYSTIF <span>(21)</span></a></li>
-                                        <li><a href="#">Program Launch <span>(3)</span></a></li>
-                                        <li><a href="#">Project Visit <span>(15)</span></a></li>
-                                        <li><a href="#">RSTW <span>(10)</span></a></li> -->
+                        <div class="col-lg-4">
+                            <div class="blog_right_sidebar">
+                                <aside class="single_sidebar_widget tag_cloud_widget">
+                                    <h4 class="widget_title">Photo Information</h4>
+                                    <ul class="list" v-if="selectedPhotoDetails">
+                                        <li>
+                                            <span class="meta-title">
+                                                Photo ID:
+                                            </span>
+                                            <span class="meta-family">
+                                                {{ selectedPhotoDetails.photo_id || 'N/A' }}
+                                            </span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">
+                                                Description:
+                                            </span>
+                                            <span class="meta-family">
+                                                {{ selectedPhotoDetails.photo_description || 'N/A' }}
+                                            </span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">
+                                                Category:
+                                            </span>
+                                            <span class="meta-family">
+                                                {{ selectedPhotoDetails.photo_category || 'N/A' }}
+                                            </span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">
+                                                Photographer:
+                                            </span>
+                                            <span class="meta-family">
+                                                {{ selectedPhotoDetails.photo_photographer || 'N/A' }}
+                                            </span>
+                                        </li> <br>
                                     </ul>
-                                </div>
+                                    <ul class="list" v-if="selectedVideo">
+                                        <li>
+                                            <span class="meta-title">Video ID:</span>
+                                            <span class="meta-family">{{ selectedVideo.video_id || 'N/A' }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Description:</span>
+                                            <span class="meta-family">{{ selectedVideo.video_description || 'N/A' }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Category:</span>
+                                            <span class="meta-family">{{ selectedVideo.video_category || 'N/A' }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Videographer:</span>
+                                            <span class="meta-family">{{ selectedVideo.video_videographer || 'N/A' }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Duration:</span>
+                                            <span class="meta-family">{{ selectedVideo.video_duration || 'N/A' }}</span>
+                                        </li>
+                                    </ul>
+
+                                </aside>
+                                <aside class="single_sidebar_widget tag_cloud_widget">
+                                    <h4 class="widget_title">Tag Clouds</h4>
+                                    <ul class="list">
+                                        <li>
+                                        <a href="#">project</a>
+                                        </li>
+                                        <li>
+                                        <a href="#">love</a>
+                                        </li>
+                                        <li>
+                                        <a href="#">technology</a>
+                                        </li>
+                                        <li>
+                                        <a href="#">travel</a>
+                                        </li>
+                                        <li>
+                                        <a href="#">restaurant</a>
+                                        </li>
+                                        <li>
+                                        <a href="#">life style</a>
+                                        </li>
+                                        <li>
+                                        <a href="#">design</a>
+                                        </li>
+                                        <li>
+                                        <a href="#">illustration</a>
+                                        </li>
+                                    </ul>
+                                </aside>
                             </div>
                         </div>
                     </div>
-                </div><!-- end row -->
-            </div><!-- end container -->
-        </section>
-    </div>
+                </div>
+            </section>
 
+        </main>
+    </div>
 </template>
 
+<style lang="css" scoped>
 
-<style scoped>
-    .list-group-item{
-        background-color: white !important;
+    .photo-category{
+        background: #0077b5;
+        color: #ffffff;
+        font-size: 10px;
+        padding: 5px;
+        margin: 15px 0;
     }
+
+    .weekly2-single {
+        padding: 0 10px;
+    }
+
+    .weekly2-news-active {
+        margin: 0 -10px;
+    }
+
+    .meta-title{
+        text-transform: uppercase;
+        font-family: Open Sans, sans-serif;
+        font-size: .8rem;
+        font-weight: 600;
+    }
+
+    .meta-family{
+        font-family: Open Sans, sans-serif;
+        font-size: .9rem;
+        margin-top: 0;
+    }
+
+    .feature-img {
+        margin-bottom: 20px;
+    }
+
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 25px;
+        height: 0;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .event-title{
+        font-weight: 700;
+    }
+
+    .weekly2-caption{
+        margin-top: 25px;
+    }
+
+
 </style>

@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\AlbumStatus;
+use App\Photo;
+use App\Video;
+
 
 class Album extends Model
 {
@@ -20,4 +24,20 @@ class Album extends Model
         'event_venue',
         'event_tags',
     ];
+
+
+    public function status()
+    {
+        return $this->hasOne(AlbumStatus::class, 'album_id', 'album_id');
+    }
+
+    public function photos()
+    {
+        return $this->hasMany(Photo::class, 'album_id', 'album_id');
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class, 'album_id', 'album_id');
+    }
 }

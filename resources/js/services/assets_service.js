@@ -9,3 +9,7 @@ export function getFeaturedEvents(){
 export function getRecentEvents() {
     return http().get('/getRecentEvents');
 }
+
+export function getEventByAlbumId(album_id) {
+    return http().get(`/getEventByAlbumId/${album_id}`);
+}

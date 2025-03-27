@@ -22,4 +22,9 @@ class Video extends Model
         'video_tags'
     ];
 
+    public function tags()
+    {
+        return $this->hasMany(VideoTags::class, 'video_id', 'id');
+    }
+
 }

@@ -68,7 +68,7 @@ const routes = [
                 component: Landing_Photos,
             },
             {
-                path: '/single-event',
+                path: '/single-event/:id',
                 name: 'single-event',
                 component: Landing_SingleEvent,
             },

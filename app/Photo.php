@@ -19,4 +19,9 @@ class Photo extends Model
         'photo_photographer',
         'photo_tags', //10
     ];
+
+    public function tags()
+    {
+        return $this->hasMany(PhotoTags::class, 'photo_id', 'id');
+    }
 }

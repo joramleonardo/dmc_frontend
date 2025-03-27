@@ -15,6 +15,7 @@ use App\Photo;
 use App\PhotoTags;
 use App\Video;
 use App\VideoTags;
+
 use App\EventTrackingLog;
 use App\Comment;
 
@@ -27,20 +28,21 @@ class AssetsController extends Controller
         ->leftJoin('tbl_photo', 'tbl_album.album_id', '=', 'tbl_photo.album_id')
         ->where('tbl_album.is_deleted', "0")
         ->whereNotNull('tbl_album.album_id')
-        ->where('tbl_album_status.album_featured', 1) // Only featured albums
+        ->where('tbl_album_status.album_featured', 1)
         ->orderBy('tbl_album.created_at', 'desc')
         ->groupBy('tbl_album.album_id')
-        ->limit(3) // Limit the results to 3
+        ->limit(3)
         ->get([
             DB::raw('(SELECT tbl_photo.photo_fileName
                       FROM tbl_photo
                       WHERE tbl_photo.album_id = tbl_album.album_id
                       ORDER BY tbl_photo.created_at ASC
-                      LIMIT 1) as photo'), // 1. Photo
-            'tbl_album.event_category', // 2. Event Category
-            'tbl_album.event_title',    // 3. Event Title
-            'tbl_album.event_date',     // 4. Event Date
-            'tbl_album.event_organizingAgency as organizing_agency' // 5. Event Organizing Agency
+                      LIMIT 1) as photo'),
+            'tbl_album.event_category',
+            'tbl_album.event_title',
+            'tbl_album.event_date',
+            'tbl_album.event_organizingAgency as organizing_agency',
+            'tbl_album.album_id'
         ]);
 
         return response()->json($data, 200);
@@ -52,24 +54,46 @@ class AssetsController extends Controller
             ->leftJoin('tbl_photo', 'tbl_album.album_id', '=', 'tbl_photo.album_id')
             ->where('tbl_album.is_deleted', "0")
             ->whereNotNull('tbl_album.album_id')
-            ->where('tbl_album_status.album_status', 'Published') // ✅ Select only Published events
-            ->orderBy('tbl_album.created_at', 'desc') // Order by newest events
+            ->where('tbl_album_status.album_status', 'Published')
+            ->orderBy('tbl_album.created_at', 'desc')
             ->groupBy('tbl_album.album_id')
-            ->limit(5) // Limit the results to 5
+            ->limit(5)
             ->get([
                 DB::raw('(SELECT tbl_photo.photo_fileName
                           FROM tbl_photo
                           WHERE tbl_photo.album_id = tbl_album.album_id
                           ORDER BY tbl_photo.created_at ASC
-                          LIMIT 1) as photo'), // 1. Photo
-                'tbl_album.event_category', // 2. Event Category
-                'tbl_album.event_title',    // 3. Event Title
-                'tbl_album.event_date',     // 4. Event Date
-                'tbl_album.event_organizingAgency as organizing_agency' // 5. Event Organizing Agency
+                          LIMIT 1) as photo'),
+                'tbl_album.event_category',
+                'tbl_album.event_title',
+                'tbl_album.event_date',
+                'tbl_album.event_organizingAgency as organizing_agency',
+                'tbl_album.album_id',
+                'tbl_album.id'
             ]);
 
         return response()->json($data, 200);
     }
+
+    public function getEventByAlbumId(Request $request, $album_id)
+    {
+        $event = Album::with([
+            'status',
+            'photos.tags',
+            'videos.tags'
+        ])
+        ->where('album_id', $album_id)
+        ->where('is_deleted', "0")
+        ->first();
+
+        if (!$event) {
+            return response()->json(['message' => 'Event not found'], 404);
+        }
+
+        return response()->json($event, 200);
+    }
+
+
 
 
 }
