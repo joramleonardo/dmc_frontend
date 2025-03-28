@@ -23,6 +23,7 @@ class Album extends Model
         'event_date',
         'event_venue',
         'event_tags',
+        'views_count',
     ];
 
 

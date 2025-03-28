@@ -118,8 +118,72 @@ class AssetsController extends Controller
             return response()->json(['message' => 'Event not found'], 404);
         }
 
+        // 👇 Increment the views_count
+        $event->increment('views_count');
+
         return response()->json($event, 200);
     }
+
+    public function getPopularEvents(Request $request)
+    {
+        $data = DB::table('tbl_album')
+            ->leftJoin('tbl_album_status', 'tbl_album.album_id', '=', 'tbl_album_status.album_id')
+            ->where('tbl_album.is_deleted', "0")
+            ->whereNotNull('tbl_album.album_id')
+            ->where('tbl_album_status.album_status', 'Published')
+            ->orderByDesc('tbl_album.views_count')
+            ->select([
+                DB::raw('(SELECT tbl_photo.photo_fileName
+                          FROM tbl_photo
+                          WHERE tbl_photo.album_id = tbl_album.album_id
+                          ORDER BY tbl_photo.created_at ASC
+                          LIMIT 1) as first_photo'),
+                'tbl_album.views_count',
+                'tbl_album.event_category',
+                'tbl_album.event_title',
+                'tbl_album.event_date',
+                'tbl_album.event_organizingAgency as organizing_agency',
+                'tbl_album.album_id',
+                'tbl_album.id'
+            ])
+            ->limit(5)
+            ->get();
+
+        return response()->json($data, 200);
+    }
+
+
+    public function getAllEventsSummary (Request $request){
+
+        $data = DB::table('tbl_album')
+        ->leftJoin('tbl_album_status', 'tbl_album.album_id', '=', 'tbl_album_status.album_id')
+        ->where('tbl_album.is_deleted', "0")
+        ->whereNotNull('tbl_album.album_id')
+        ->where('tbl_album_status.album_status', 'Published')
+        ->orderBy('tbl_album.created_at', 'desc')
+        ->select([
+            DB::raw('(SELECT tbl_photo.photo_fileName
+                    FROM tbl_photo
+                    WHERE tbl_photo.album_id = tbl_album.album_id
+                    ORDER BY tbl_photo.created_at ASC
+                    LIMIT 1) as first_photo'),
+            DB::raw('(SELECT COUNT(*) FROM tbl_photo WHERE tbl_photo.album_id = tbl_album.album_id) as photo_count'),
+            DB::raw('(SELECT COUNT(*) FROM tbl_video WHERE tbl_video.album_id = tbl_album.album_id) as video_count'),
+            'tbl_album.event_category',
+            'tbl_album.event_title',
+            'tbl_album.event_description',
+            'tbl_album.event_date',
+            'tbl_album.event_organizingAgency as organizing_agency',
+            'tbl_album.album_id',
+            'tbl_album.id',
+            'tbl_album.views_count'
+        ])
+        ->get();
+
+
+        return response()->json($data, 200);
+    }
+
 
 
 

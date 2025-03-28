@@ -3,7 +3,7 @@
 <script>
     import * as assets_service from '../../../../services/assets_service.js';
 
-    import Header from '../Home/ComponentSection_Header.vue';
+    import Header from '../Layouts/Header.vue';
     import UpcomingEvents from '../Home/ComponentSection_UpcomingEvents.vue';
 
     import $ from 'jquery';
@@ -125,6 +125,9 @@
                                 <h2 class="event-title">
                                     {{list_eventDetails.event_title}}
                                 </h2>
+                                <p class="view-count mb-3">
+                                Views: {{ list_eventDetails.views_count || 0 }}
+                                </p>
                                 <div class="feature-img">
                                     <img
                                         v-if="featuredPhoto"
@@ -154,11 +157,6 @@
 
 
                                 <div class="blog_details">
-
-                                    <!-- <ul class="blog-info-link mt-3 mb-4">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                    </ul> -->
                                     <div class="slider-wrapper">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -207,64 +205,16 @@
                                     <h4 class="widget_title">Event Information</h4>
                                     <ul class="list">
                                         <li>
-                                            <span class="meta-title">Video ID:</span>
+                                            <span class="meta-title">Event ID:</span>
 
                                         </li> <br>
                                         <li>
+                                            <span class="meta-title">Organizing Agency:</span>
+                                        </li> <br>
+                                        <li>
                                             <span class="meta-title">Category:</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Videographer:</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Duration:</span>
                                         </li>
                                     </ul>
-                                    <!-- <ul class="list" v-if="selectedPhotoDetails">
-                                        <li>
-                                            <span class="meta-title">
-                                                Photo ID:
-                                            </span>
-                                            <span class="meta-family">
-                                                {{ selectedPhotoDetails.photo_id || 'N/A' }}
-                                            </span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">
-                                                Category:
-                                            </span>
-                                            <span class="meta-family">
-                                                {{ selectedPhotoDetails.photo_category || 'N/A' }}
-                                            </span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">
-                                                Photographer:
-                                            </span>
-                                            <span class="meta-family">
-                                                {{ selectedPhotoDetails.photo_photographer || 'N/A' }}
-                                            </span>
-                                        </li> <br>
-                                    </ul> -->
-                                    <!-- <ul class="list" v-if="selectedVideo">
-                                        <li>
-                                            <span class="meta-title">Video ID:</span>
-                                            <span class="meta-family">{{ selectedVideo.video_id || 'N/A' }}</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Category:</span>
-                                            <span class="meta-family">{{ selectedVideo.video_category || 'N/A' }}</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Videographer:</span>
-                                            <span class="meta-family">{{ selectedVideo.video_videographer || 'N/A' }}</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Duration:</span>
-                                            <span class="meta-family">{{ selectedVideo.video_duration || 'N/A' }}</span>
-                                        </li>
-                                    </ul> -->
-
                                 </aside>
                                 <aside class="single_sidebar_widget tag_cloud_widget">
                                     <h4 class="widget_title">Tag Clouds</h4>
@@ -372,6 +322,13 @@
         font-style: italic;
         text-align: center;
     }
+
+    .view-count {
+        font-size: 14px;
+        color: #888;
+        font-style: italic;
+        }
+
 
 
 </style>

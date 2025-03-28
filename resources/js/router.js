@@ -8,6 +8,7 @@ import Login from './views/Login/Login.vue';
 import HomePage from './views/DMC/Landing/_Holder.vue';
 import Landing_Main from './views/DMC/Pages/Home/ComponentMain_Landing.vue';
 import Landing_SingleEvent from './views/DMC/Pages/Events/ComponentSection_SingleEvent.vue';
+import Events from './views/DMC/Pages/Events/ComponentsSection_Events.vue';
 
 import Landing_Home from './views/DMC/Landing/Home.vue';
 import Landing_Events from './views/DMC/Landing/Events.vue';
@@ -40,6 +41,11 @@ const routes = [
         path: '/_photos',
         name: '_photos',
         component: _Photos
+    },
+    {
+        path: '/events',
+        name: 'events',
+        component: Events
     },
     {
         path: '/',

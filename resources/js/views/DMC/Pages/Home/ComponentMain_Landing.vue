@@ -1,11 +1,12 @@
 
 
 <script>
-    import Header from './ComponentSection_Header.vue';
+    import Header from '../Layouts/Header.vue';
     import FeaturedEvents from './ComponentSection_FeaturedEvents.vue';
     import RecentEvents from './ComponentSection_RecentEvents.vue';
     import UpcomingEvents from './ComponentSection_UpcomingEvents.vue';
     import RecentCoverages from './ComponentSection_RecentCoverages.vue';
+    import Footer from '../Layouts/Footer.vue';
 
     export default {
         components: {
@@ -13,7 +14,8 @@
             FeaturedEvents,
             RecentEvents,
             UpcomingEvents,
-            RecentCoverages
+            RecentCoverages,
+            Footer
         }
     }
 </script>
@@ -72,5 +74,6 @@
             </div>
 
         </main>
+        <Footer />
     </div>
 </template>

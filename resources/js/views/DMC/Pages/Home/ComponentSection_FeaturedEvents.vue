@@ -80,11 +80,10 @@
                                         <img :src="'/storage/images/' + event.photo" alt="">
                                         <div class="trend-top-cap">
                                             <h2>
-                                                <!-- <a href="single.html" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms"> -->
                                                 <router-link v-bind:to="{name : 'single-event', params: { id: event.album_id}}" >
+                                                    <span v-if="event.most_viewed" class="badge-hot">🔥 Most Viewed</span>
                                                     {{ event.event_title }}
                                                 </router-link>
-                                                <!-- </a> -->
                                             </h2>
                                             <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">
                                                 <strong class="trend-category">{{ event.event_category }}</strong>
