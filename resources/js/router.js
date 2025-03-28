@@ -3,15 +3,19 @@ import Router from 'vue-router';
 
 import Login from './views/Login/Login.vue';
 
-import Landing_Main from './views/DMC/Landing/_MainLanding.vue';
-import Landing_Holder from './views/DMC/Landing/_Holder.vue';
+
+
+import HomePage from './views/DMC/Landing/_Holder.vue';
+import Landing_Main from './views/DMC/Pages/Home/ComponentMain_Landing.vue';
+import Landing_SingleEvent from './views/DMC/Pages/Events/ComponentSection_SingleEvent.vue';
+
 import Landing_Home from './views/DMC/Landing/Home.vue';
-import Landing_Events from './views/DMC/Landing/Events.vue'; //Album
-import Landing_Coverages from './views/DMC/Landing/Coverages.vue'; //Videos
-import Landing_Photos from './views/DMC/Landing/Photos.vue'; //Photos
-import Landing_SingleEvent from './views/DMC/Landing/SingleEvent.vue'; //Single Event
-import Landing_SingleVideo from './views/DMC/Landing/SingleVideo.vue'; //Single Video
-import Landing_SinglePhoto from './views/DMC/Landing/SinglePhoto.vue'; //Single Photo
+import Landing_Events from './views/DMC/Landing/Events.vue';
+import Landing_Coverages from './views/DMC/Landing/Coverages.vue';
+import Landing_Photos from './views/DMC/Landing/Photos.vue';
+// import Landing_SingleVideo from './views/DMC/Landing/SingleVideo.vue';
+// import Landing_SinglePhoto from './views/DMC/Landing/SinglePhoto.vue';
+
 
 
 import _Home from './views/DMC/Landing/_Home.vue';
@@ -45,7 +49,7 @@ const routes = [
     {
         path: '/holder',
         name: '',
-        component: Landing_Holder,
+        component: HomePage,
         children: [
             {
                 path: '/home',
@@ -71,16 +75,6 @@ const routes = [
                 path: '/single-event/:id',
                 name: 'single-event',
                 component: Landing_SingleEvent,
-            },
-            {
-                path: '/single-video',
-                name: 'single-video',
-                component: Landing_SingleVideo,
-            },
-            {
-                path: '/single-photo',
-                name: 'single-photo',
-                component: Landing_SinglePhoto,
             },
         ]
     },

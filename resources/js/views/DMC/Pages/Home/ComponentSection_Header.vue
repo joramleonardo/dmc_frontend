@@ -21,7 +21,7 @@
                                                 Home
                                             </a>
                                         </li>
-                                        <li><a href="#">Category</a>
+                                        <!-- <li><a href="#">Category</a>
                                             <ul class="submenu">
                                                 <li><a href="blog.html">Anniversaries</a></li>
                                                 <li><a href="blog_details.html">Awarding Ceremonies</a></li>
@@ -29,10 +29,10 @@
                                                 <li><a href="elements.html">Exhibits</a></li>
                                                 <li><a href="elements.html">Forums</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li><a href="about.html">Events</a></li>
-                                        <li><a href="categori.html">Photos</a></li>
-                                        <li><a href="latest_news.html">coverages</a></li>
+                                        <!-- <li><a href="categori.html">Photos</a></li>
+                                        <li><a href="latest_news.html">coverages</a></li> -->
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </nav>

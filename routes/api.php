@@ -6,5 +6,8 @@ use App\Http\Controllers\AssetsController;
 
 Route::get('/getFeaturedEvents', [AssetsController::class, 'getFeaturedEvents']);
 Route::get('/getRecentEvents', [AssetsController::class, 'getRecentEvents']);
+Route::get('/getRecentVideos', [AssetsController::class, 'getRecentVideos']);
+
 Route::get('/getEventByAlbumId/{album_id}', [AssetsController::class, 'getEventByAlbumId']);
+
 

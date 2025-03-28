@@ -1,7 +1,7 @@
 
 
 <script>
-    import * as assets_service from '../../../services/assets_service.js';
+    import * as assets_service from '../../../../services/assets_service.js';
 
     import 'slick-carousel/slick/slick.css';
     import 'slick-carousel/slick/slick-theme.css';

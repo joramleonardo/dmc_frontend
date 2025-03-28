@@ -75,6 +75,34 @@ class AssetsController extends Controller
         return response()->json($data, 200);
     }
 
+    public function getRecentVideos(Request $request) {
+        $data = DB::table('tbl_album')
+            ->leftJoin('tbl_album_status', 'tbl_album.album_id', '=', 'tbl_album_status.album_id')
+            ->leftJoin('tbl_video', 'tbl_album.album_id', '=', 'tbl_video.album_id')
+            ->where('tbl_album.is_deleted', "0")
+            ->whereNotNull('tbl_album.album_id')
+            ->where('tbl_album_status.album_status', 'Published')
+            ->orderBy('tbl_album.created_at', 'desc')
+            ->groupBy('tbl_album.album_id')
+            ->limit(5)
+            ->get([
+                DB::raw('(SELECT tbl_video.video_link
+                          FROM tbl_video
+                          WHERE tbl_video.album_id = tbl_album.album_id
+                          ORDER BY tbl_video.created_at ASC
+                          LIMIT 1) as video_link'),
+                'tbl_album.event_category',
+                'tbl_album.event_title',
+                'tbl_album.event_date',
+                'tbl_album.event_organizingAgency as organizing_agency',
+                'tbl_album.album_id',
+                'tbl_album.id'
+            ]);
+
+        return response()->json($data, 200);
+    }
+
+
     public function getEventByAlbumId(Request $request, $album_id)
     {
         $event = Album::with([

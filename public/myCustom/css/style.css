@@ -5423,9 +5423,9 @@ hr {
 	transition: all 0.2s linear
 }
 
-.single-post-area .blog_details {
+/* .single-post-area .blog_details {
 	padding-top: 26px
-}
+} */
 
 .single-post-area .blog_details p {
 	margin-bottom: 20px;

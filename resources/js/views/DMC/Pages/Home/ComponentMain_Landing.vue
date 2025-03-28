@@ -1,17 +1,19 @@
 
 
 <script>
-    import Header from './SectionHeader.vue';
-    import FeaturedEvents from './SectionFeaturedEvents.vue';
-    import RecentEvents from './SectionRecentEvents.vue';
-    import UpcomingEvents from './SectionUpcomingEvents.vue';
+    import Header from './ComponentSection_Header.vue';
+    import FeaturedEvents from './ComponentSection_FeaturedEvents.vue';
+    import RecentEvents from './ComponentSection_RecentEvents.vue';
+    import UpcomingEvents from './ComponentSection_UpcomingEvents.vue';
+    import RecentCoverages from './ComponentSection_RecentCoverages.vue';
 
     export default {
         components: {
             Header,
             FeaturedEvents,
             RecentEvents,
-            UpcomingEvents
+            UpcomingEvents,
+            RecentCoverages
         }
     }
 </script>
@@ -56,6 +58,18 @@
                 </div>
             </section>
             <!-- Whats New End -->
+
+            <div class="weekly3-news-area pt-80 pb-130">
+                <div class="container">
+                    <div class="weekly3-wrapper">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <RecentCoverages />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </main>
     </div>

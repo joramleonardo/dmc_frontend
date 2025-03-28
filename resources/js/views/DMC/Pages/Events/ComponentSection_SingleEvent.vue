@@ -1,10 +1,10 @@
 
 
 <script>
-    import * as assets_service from '../../../services/assets_service.js';
+    import * as assets_service from '../../../../services/assets_service.js';
 
-    import Header from './SectionHeader.vue';
-    import UpcomingEvents from './SectionUpcomingEvents.vue';
+    import Header from '../Home/ComponentSection_Header.vue';
+    import UpcomingEvents from '../Home/ComponentSection_UpcomingEvents.vue';
 
     import $ from 'jquery';
 
@@ -42,6 +42,8 @@
                 try {
                     const response = await assets_service.getEventByAlbumId(this.album_id);
                     this.list_eventDetails = response.data;
+                    console.log("aaa");
+                    console.log(this.list_eventDetails);
 
                     if (this.list_eventDetails.photos && this.list_eventDetails.photos.length > 0) {
                         this.featuredPhoto = this.list_eventDetails.photos[0].photo_fileName;
@@ -202,22 +204,29 @@
                         <div class="col-lg-4">
                             <div class="blog_right_sidebar">
                                 <aside class="single_sidebar_widget tag_cloud_widget">
-                                    <h4 class="widget_title">Photo Information</h4>
-                                    <ul class="list" v-if="selectedPhotoDetails">
+                                    <h4 class="widget_title">Event Information</h4>
+                                    <ul class="list">
+                                        <li>
+                                            <span class="meta-title">Video ID:</span>
+
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Category:</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Videographer:</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Duration:</span>
+                                        </li>
+                                    </ul>
+                                    <!-- <ul class="list" v-if="selectedPhotoDetails">
                                         <li>
                                             <span class="meta-title">
                                                 Photo ID:
                                             </span>
                                             <span class="meta-family">
                                                 {{ selectedPhotoDetails.photo_id || 'N/A' }}
-                                            </span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">
-                                                Description:
-                                            </span>
-                                            <span class="meta-family">
-                                                {{ selectedPhotoDetails.photo_description || 'N/A' }}
                                             </span>
                                         </li> <br>
                                         <li>
@@ -236,15 +245,11 @@
                                                 {{ selectedPhotoDetails.photo_photographer || 'N/A' }}
                                             </span>
                                         </li> <br>
-                                    </ul>
-                                    <ul class="list" v-if="selectedVideo">
+                                    </ul> -->
+                                    <!-- <ul class="list" v-if="selectedVideo">
                                         <li>
                                             <span class="meta-title">Video ID:</span>
                                             <span class="meta-family">{{ selectedVideo.video_id || 'N/A' }}</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Description:</span>
-                                            <span class="meta-family">{{ selectedVideo.video_description || 'N/A' }}</span>
                                         </li> <br>
                                         <li>
                                             <span class="meta-title">Category:</span>
@@ -258,7 +263,7 @@
                                             <span class="meta-title">Duration:</span>
                                             <span class="meta-family">{{ selectedVideo.video_duration || 'N/A' }}</span>
                                         </li>
-                                    </ul>
+                                    </ul> -->
 
                                 </aside>
                                 <aside class="single_sidebar_widget tag_cloud_widget">
