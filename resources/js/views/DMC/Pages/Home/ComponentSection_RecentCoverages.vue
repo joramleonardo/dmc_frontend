@@ -21,6 +21,8 @@
                 try {
                     const response = await assets_service.getRecentVideos();
                     this.list_recentVideos = response.data;
+                    console.log("videos");
+                    console.log(this.list_recentVideos);
 
                     this.$nextTick(() => {
                         this.reinitializeSlider();
@@ -79,28 +81,40 @@
     <div class="slider-wrapper">
         <div class="row">
             <div class="col-lg-12">
+                <div class="small-tittle mb-30">
+                    <h4>Recent Coverages</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="weekly3-news-active dot-style compact-style" ref="slider">
-                    <div
-                    class="video-card"
-                    v-for="(video, index) in list_recentVideos"
-                    :key="index"
-                    >
-                    <div class="thumb-wrapper">
-                        <img
-                        class="img-fluid"
-                        :src="getYoutubeThumbnail(video.video_link)"
-                        alt="Video Thumbnail"
-                        />
-                        <div class="play-icon">▶</div>
-                    </div>
-                    <div class="caption">
-                        <h6 class="video-title">
-                        <a :href="'/event/' + video.album_id">
-                            {{ video.video_title }}
-                        </a>
-                        </h6>
-                        <p class="video-date">{{ formatDate(video.event_date) }}</p>
-                    </div>
+                    <div class="video-card" v-for="(video, index) in list_recentVideos" :key="index">
+                        <div class="thumb-wrapper">
+                            <img
+                            class="img-fluid"
+                            :src="getYoutubeThumbnail(video.video_link)"
+                            alt="Video Thumbnail"
+                            />
+                            <!-- <router-link v-bind:to="{name : 'single-event', params: { id: video.album_id}}" > -->
+                                <router-link
+                                    :to="{
+                                        name: 'single-event',
+                                        params: { id: video.album_id },
+                                        query: { video: video.video_id }
+                                    }"
+                                    >
+                                <div class="play-icon">▶</div>
+                            </router-link>
+                        </div>
+                        <!-- <div class="caption">
+                            <h6 class="video-title">
+                                <a :href="'/event/' + video.album_id">
+                                    {{ video.video_link }}
+                                </a>
+                            </h6>
+                            <p class="video-date">{{ video.event_date }}</p>
+                        </div> -->
                     </div>
                 </div>
             </div>

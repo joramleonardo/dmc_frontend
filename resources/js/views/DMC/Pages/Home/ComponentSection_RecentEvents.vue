@@ -2,12 +2,16 @@
 
 <script>
     import * as assets_service from '../../../../services/assets_service.js';
+    import RecentCoverages from './ComponentSection_RecentCoverages.vue';
 
     import 'slick-carousel/slick/slick.css';
     import 'slick-carousel/slick/slick-theme.css';
     import 'slick-carousel';
 
     export default {
+        components: {
+            RecentCoverages
+        },
         data(){
             return {
                 list_recentEvents: [],
@@ -65,13 +69,11 @@
     <div class="col-lg-8 mb-5 mb-lg-0">
         <div class="whats-news-wrapper">
             <!-- Heading & Nav Button -->
-            <div class="row justify-content-between align-items-end mb-15">
-                <div class="col-xl-4">
-                    <div class="section-tittle mb-30">
-                        <h3>What's New</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="small-tittle mb-30">
+                        <h4>What's New?</h4>
                     </div>
-                </div>
-                <div class="col-xl-8 col-md-9">
                 </div>
             </div>
             <div class="row">
@@ -128,8 +130,24 @@
                     </div>
                 </div>
             </div>
+
         </div>
+
+        <div class="weekly3-news-area pt-20 pb-130">
+            <div class="container">
+                <div class="weekly3-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <RecentCoverages />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+
 </template>
 
 

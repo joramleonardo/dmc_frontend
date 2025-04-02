@@ -61,17 +61,7 @@
             </section>
             <!-- Whats New End -->
 
-            <div class="weekly3-news-area pt-80 pb-130">
-                <div class="container">
-                    <div class="weekly3-wrapper">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <RecentCoverages />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
         </main>
         <Footer />

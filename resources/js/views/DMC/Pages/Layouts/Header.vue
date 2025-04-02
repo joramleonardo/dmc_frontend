@@ -31,6 +31,7 @@
                                             </ul>
                                         </li> -->
                                         <li><a href="/events">Events</a></li>
+                                        <li><a href="/photos">Photos</a></li>
                                         <!-- <li><a href="categori.html">Photos</a></li>
                                         <li><a href="latest_news.html">coverages</a></li> -->
                                         <li><a href="contact.html">Contact</a></li>

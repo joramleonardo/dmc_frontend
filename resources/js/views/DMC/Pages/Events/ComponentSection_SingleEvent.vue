@@ -16,6 +16,8 @@
         data(){
             return {
                 album_id : this.$route.params.id,
+                target_photo_id: this.$route.query.photo || null,
+                target_video_id: this.$route.query.video || null,
                 list_eventDetails: [],
                 featuredPhoto: null,
                 selectedPhotoDetails: null,
@@ -39,25 +41,58 @@
         },
         methods:{
             async loadEventDetails() {
-                try {
-                    const response = await assets_service.getEventByAlbumId(this.album_id);
-                    this.list_eventDetails = response.data;
-                    console.log("aaa");
-                    console.log(this.list_eventDetails);
+    try {
+        const response = await assets_service.getEventByAlbumId(this.album_id);
+        this.list_eventDetails = response.data;
+        console.log("aaa");
+        console.log(this.list_eventDetails);
 
-                    if (this.list_eventDetails.photos && this.list_eventDetails.photos.length > 0) {
-                        this.featuredPhoto = this.list_eventDetails.photos[0].photo_fileName;
-                        this.selectedPhotoDetails = this.list_eventDetails.photos[0];
-                    }
+        const photos = this.list_eventDetails.photos || [];
+        const videos = this.list_eventDetails.videos || [];
 
-                    this.$nextTick(() => {
-                        this.reinitializePhotoSlider();
-                    });
+        // 🌟 1. Check if there's a photo ID from the URL
+        if (this.target_photo_id && photos.length > 0) {
+            const foundPhoto = photos.find(p => p.photo_id == this.target_photo_id);
+            if (foundPhoto) {
+                this.featuredPhoto = foundPhoto.photo_fileName;
+                this.selectedPhotoDetails = foundPhoto;
+                this.selectedVideo = null;
+                return;
+            }
+        }
 
-                } catch (error) {
-                    console.error("API Error:", error);
-                }
-            },
+        // 🌟 2. Check if there's a video ID from the URL
+        if (this.target_video_id && videos.length > 0) {
+            const foundVideo = videos.find(v => v.video_id == this.target_video_id);
+            if (foundVideo) {
+                this.selectedVideo = foundVideo;
+                this.featuredPhoto = null;
+                this.selectedPhotoDetails = null;
+                return;
+            }
+        }
+
+        // ✅ 3. Fallback: show first photo if available
+        if (photos.length > 0) {
+            this.featuredPhoto = photos[0].photo_fileName;
+            this.selectedPhotoDetails = photos[0];
+            this.selectedVideo = null;
+        }
+        // ✅ 4. Fallback: show first video if no photo
+        else if (videos.length > 0) {
+            this.selectedVideo = videos[0];
+            this.featuredPhoto = null;
+            this.selectedPhotoDetails = null;
+        }
+
+        this.$nextTick(() => {
+            this.reinitializePhotoSlider();
+        });
+
+    } catch (error) {
+        console.error("API Error:", error);
+    }
+},
             selectPhoto(photo) {
                 this.featuredPhoto = photo.photo_fileName;
                 this.selectedPhotoDetails = photo;

@@ -91,6 +91,11 @@ class AssetsController extends Controller
                           WHERE tbl_video.album_id = tbl_album.album_id
                           ORDER BY tbl_video.created_at ASC
                           LIMIT 1) as video_link'),
+                DB::raw('(SELECT tbl_video.video_id
+                          FROM tbl_video
+                          WHERE tbl_video.album_id = tbl_album.album_id
+                          ORDER BY tbl_video.created_at ASC
+                          LIMIT 1) as video_id'),
                 'tbl_album.event_category',
                 'tbl_album.event_title',
                 'tbl_album.event_date',
@@ -101,6 +106,7 @@ class AssetsController extends Controller
 
         return response()->json($data, 200);
     }
+
 
 
     public function getEventByAlbumId(Request $request, $album_id)
@@ -153,36 +159,73 @@ class AssetsController extends Controller
     }
 
 
-    public function getAllEventsSummary (Request $request){
+    public function getAllEventsSummary(Request $request)
+    {
+        $query = DB::table('tbl_album')
+            ->leftJoin('tbl_album_status', 'tbl_album.album_id', '=', 'tbl_album_status.album_id')
+            ->select([
+                'tbl_album.album_id',
+                'tbl_album.event_title',
+                'tbl_album.event_category',
+                'tbl_album.event_description',
+                'tbl_album.event_date',
+                'tbl_album.event_organizingAgency as organizing_agency',
+                'tbl_album.views_count',
+                DB::raw('(SELECT COUNT(*) FROM tbl_photo WHERE tbl_photo.album_id = tbl_album.album_id) as photo_count'),
+                DB::raw('(SELECT COUNT(*) FROM tbl_video WHERE tbl_video.album_id = tbl_album.album_id) as video_count'),
+                DB::raw('(SELECT photo_fileName FROM tbl_photo WHERE tbl_photo.album_id = tbl_album.album_id ORDER BY created_at ASC LIMIT 1) as first_photo'),
+            ])
+            ->where('tbl_album.is_deleted', 0)
+            ->where('tbl_album_status.album_status', 'Published');
 
-        $data = DB::table('tbl_album')
-        ->leftJoin('tbl_album_status', 'tbl_album.album_id', '=', 'tbl_album_status.album_id')
-        ->where('tbl_album.is_deleted', "0")
-        ->whereNotNull('tbl_album.album_id')
-        ->where('tbl_album_status.album_status', 'Published')
-        ->orderBy('tbl_album.created_at', 'desc')
-        ->select([
-            DB::raw('(SELECT tbl_photo.photo_fileName
-                    FROM tbl_photo
-                    WHERE tbl_photo.album_id = tbl_album.album_id
-                    ORDER BY tbl_photo.created_at ASC
-                    LIMIT 1) as first_photo'),
-            DB::raw('(SELECT COUNT(*) FROM tbl_photo WHERE tbl_photo.album_id = tbl_album.album_id) as photo_count'),
-            DB::raw('(SELECT COUNT(*) FROM tbl_video WHERE tbl_video.album_id = tbl_album.album_id) as video_count'),
-            'tbl_album.event_category',
-            'tbl_album.event_title',
-            'tbl_album.event_description',
-            'tbl_album.event_date',
-            'tbl_album.event_organizingAgency as organizing_agency',
-            'tbl_album.album_id',
-            'tbl_album.id',
-            'tbl_album.views_count'
-        ])
-        ->get();
+        // Search
+        if ($request->has('search') && $request->search !== '') {
+            $query->where(function ($subQuery) use ($request) {
+                $subQuery->where('tbl_album.event_title', 'like', '%' . $request->search . '%')
+                    ->orWhere('tbl_album.event_category', 'like', '%' . $request->search . '%')
+                    ->orWhere('tbl_album.event_organizingAgency', 'like', '%' . $request->search . '%');
+            });
+        }
 
+        // Filter by year
+        if ($request->has('year') && $request->year !== '') {
+            $query->whereYear('tbl_album.event_date', $request->year);
+        }
 
-        return response()->json($data, 200);
+        // Filter by month
+        if ($request->has('month') && $request->month !== '') {
+            $query->whereMonth('tbl_album.event_date', $request->month);
+        }
+
+        $result = $query->orderBy('tbl_album.created_at', 'desc')->paginate(5);
+
+        return response()->json($result);
     }
+
+
+    public function getAllPhotos(Request $request)
+    {
+        $limit = $request->input('limit', 15);
+        $photos = DB::table('tbl_photo')
+            ->leftJoin('tbl_album', 'tbl_album.album_id', '=', 'tbl_photo.album_id')
+            ->select(
+                'tbl_photo.photo_fileName',
+                'tbl_photo.photo_title',
+                'tbl_photo.photo_description',
+                'tbl_photo.photo_id',
+                'tbl_album.album_id',
+                'tbl_album.event_title as album_title'
+            )
+            ->orderBy('tbl_photo.created_at', 'desc')
+            ->paginate($limit);
+
+        return response()->json($photos, 200);
+    }
+
+
+
+
+
 
 
 
