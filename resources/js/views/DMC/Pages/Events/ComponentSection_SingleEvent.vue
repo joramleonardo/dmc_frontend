@@ -321,7 +321,11 @@
                                                     {{ list_eventDetails.event_organizingAgency }}
                                                 </a>
                                             </span>
-                                        </li> <br>
+                                        </li> <br><br>
+                                        <button class="genric-btn primary-border small" type="submit">
+                                            Request Photo
+                                        </button>
+
                                     </ul>
                                 </aside>
 

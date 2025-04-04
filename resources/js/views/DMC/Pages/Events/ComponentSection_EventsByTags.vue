@@ -68,6 +68,7 @@ export default {
             const [year, month] = event.target.value.split('-');
             this.selectedYear = year;
             this.selectedMonth = month;
+
             this.$router.push({
                 path: '/events-tags',
                 query: {
@@ -104,9 +105,10 @@ export default {
                         <!-- Section Tittle -->
                         <div class="section-tittles mb-20">
                             <span class="display-result-text">Displaying results for
-                                <a class="display-result-text-keyword">
+                                <!-- <a class="display-result-text-keyword">
                                     {{ tagName }}
-                                </a>
+                                </a> -->
+                                <strong>{{ tagName }}</strong>
                             </span>
                         </div>
                     </div>
@@ -118,7 +120,7 @@ export default {
 
                             <div v-else-if="eventSummaries && eventSummaries.data && eventSummaries.data.length === 0" class="text-center py-5 text-muted">
 
-                                😕 No results found for <strong>{{ tagName }}</strong>
+                                No results found for <strong>{{ tagName }}</strong>
                             </div>
                             <article class="blog_item" v-for="(event, index) in eventSummaries.data || []" :key="index">
                                 <div class="blog_item_img">
@@ -167,8 +169,10 @@ export default {
                                     <input
                                         type="month"
                                         class="form-control"
-
+                                        :value="selectedYear && selectedMonth ? `${selectedYear}-${selectedMonth.padStart(2, '0')}` : ''"
+                                        @change="onMonthYearChange"
                                     />
+
                                 </div>
                             </aside>
 

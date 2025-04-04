@@ -126888,13 +126888,8 @@ var render = function() {
             _c("div", { staticClass: "section-tittles mb-20" }, [
               _c("span", { staticClass: "display-result-text" }, [
                 _vm._v("Displaying results for\n                            "),
-                _c("a", { staticClass: "display-result-text-keyword" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.tagName) +
-                      "\n                            "
-                  )
-                ])
+                _vm._v(" "),
+                _c("strong", [_vm._v(_vm._s(_vm.tagName))])
               ])
             ])
           ])
@@ -126915,7 +126910,7 @@ var render = function() {
                     _vm.eventSummaries.data.length === 0
                   ? _c("div", { staticClass: "text-center py-5 text-muted" }, [
                       _vm._v(
-                        "\n\n                            😕 No results found for "
+                        "\n\n                            No results found for "
                       ),
                       _c("strong", [_vm._v(_vm._s(_vm.tagName))])
                     ])
@@ -127115,7 +127110,21 @@ var render = function() {
                         _vm._v("Filter by Year & Month")
                       ]),
                       _vm._v(" "),
-                      _vm._m(0)
+                      _c("div", { staticClass: "form-group mb-2" }, [
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "month" },
+                          domProps: {
+                            value:
+                              _vm.selectedYear && _vm.selectedMonth
+                                ? _vm.selectedYear +
+                                  "-" +
+                                  _vm.selectedMonth.padStart(2, "0")
+                                : ""
+                          },
+                          on: { change: _vm.onMonthYearChange }
+                        })
+                      ])
                     ])
                   : undefined,
                 _vm._v(" "),
@@ -127129,16 +127138,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group mb-2" }, [
-      _c("input", { staticClass: "form-control", attrs: { type: "month" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -127618,7 +127618,21 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("br")
+                          _c("br"),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "genric-btn primary-border small",
+                              attrs: { type: "submit" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        Request Photo\n                                    "
+                              )
+                            ]
+                          )
                         ])
                       ]
                     ),
