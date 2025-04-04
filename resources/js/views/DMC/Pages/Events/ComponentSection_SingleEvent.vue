@@ -5,19 +5,24 @@
 
     import Header from '../Layouts/Header.vue';
     import UpcomingEvents from '../Home/ComponentSection_UpcomingEvents.vue';
+    import RelatedEvents from './ComponentSection_RelatedEvents.vue';
+    import TagClouds from './ComponentSection_Tags.vue';
 
-    import $ from 'jquery';
+
 
     export default {
         components: {
             Header,
-            UpcomingEvents
+            UpcomingEvents,
+            RelatedEvents,
+            TagClouds
         },
         data(){
             return {
                 album_id : this.$route.params.id,
                 target_photo_id: this.$route.query.photo || null,
                 target_video_id: this.$route.query.video || null,
+                searchTag: this.$route.query.searchTag || '', // 👈 added
                 list_eventDetails: [],
                 featuredPhoto: null,
                 selectedPhotoDetails: null,
@@ -25,9 +30,9 @@
                 activeItem: null,
             }
         },
-        mounted(){
-            this.loadEventDetails();
-        },
+        // mounted(){
+        //     this.loadEventDetails();
+        // },
         computed: {
             mediaItems() {
                 const photos = this.list_eventDetails.photos || [];
@@ -39,60 +44,100 @@
                 return [...photoItems, ...videoItems];
             }
         },
+        watch: {
+            '$route.params.id': {
+                immediate: true,
+                handler(newId) {
+                    this.album_id = newId;
+                    this.loadEventDetails();
+                }
+            },
+            '$route.query.searchTag': {
+                immediate: true,
+                handler(newTag) {
+                    this.searchTag = newTag;
+                    this.loadEventsByTag();
+                }
+            }
+        },
         methods:{
             async loadEventDetails() {
-    try {
-        const response = await assets_service.getEventByAlbumId(this.album_id);
-        this.list_eventDetails = response.data;
-        console.log("aaa");
-        console.log(this.list_eventDetails);
+                try {
+                    const response = await assets_service.getEventByAlbumId(this.album_id);
+                    this.list_eventDetails = response.data;
+                    console.log("aaa");
+                    console.log(this.list_eventDetails);
 
-        const photos = this.list_eventDetails.photos || [];
-        const videos = this.list_eventDetails.videos || [];
+                    const photos = this.list_eventDetails.photos || [];
+                    const videos = this.list_eventDetails.videos || [];
 
-        // 🌟 1. Check if there's a photo ID from the URL
-        if (this.target_photo_id && photos.length > 0) {
-            const foundPhoto = photos.find(p => p.photo_id == this.target_photo_id);
-            if (foundPhoto) {
-                this.featuredPhoto = foundPhoto.photo_fileName;
-                this.selectedPhotoDetails = foundPhoto;
-                this.selectedVideo = null;
-                return;
-            }
-        }
+                    // 🌟 1. Check if there's a photo ID from the URL
+                    if (this.target_photo_id && photos.length > 0) {
+                        const foundPhoto = photos.find(p => p.photo_id == this.target_photo_id);
+                        if (foundPhoto) {
+                            this.featuredPhoto = foundPhoto.photo_fileName;
+                            this.selectedPhotoDetails = foundPhoto;
+                            this.selectedVideo = null;
+                            return;
+                        }
+                    }
 
-        // 🌟 2. Check if there's a video ID from the URL
-        if (this.target_video_id && videos.length > 0) {
-            const foundVideo = videos.find(v => v.video_id == this.target_video_id);
-            if (foundVideo) {
-                this.selectedVideo = foundVideo;
-                this.featuredPhoto = null;
-                this.selectedPhotoDetails = null;
-                return;
-            }
-        }
+                    // 🌟 2. Check if there's a video ID from the URL
+                    if (this.target_video_id && videos.length > 0) {
+                        const foundVideo = videos.find(v => v.video_id == this.target_video_id);
+                        if (foundVideo) {
+                            this.selectedVideo = foundVideo;
+                            this.featuredPhoto = null;
+                            this.selectedPhotoDetails = null;
+                            return;
+                        }
+                    }
 
-        // ✅ 3. Fallback: show first photo if available
-        if (photos.length > 0) {
-            this.featuredPhoto = photos[0].photo_fileName;
-            this.selectedPhotoDetails = photos[0];
-            this.selectedVideo = null;
-        }
-        // ✅ 4. Fallback: show first video if no photo
-        else if (videos.length > 0) {
-            this.selectedVideo = videos[0];
-            this.featuredPhoto = null;
-            this.selectedPhotoDetails = null;
-        }
+                    // ✅ 3. Fallback: show first photo if available
+                    if (photos.length > 0) {
+                        this.featuredPhoto = photos[0].photo_fileName;
+                        this.selectedPhotoDetails = photos[0];
+                        this.selectedVideo = null;
+                    }
+                    // ✅ 4. Fallback: show first video if no photo
+                    else if (videos.length > 0) {
+                        this.selectedVideo = videos[0];
+                        this.featuredPhoto = null;
+                        this.selectedPhotoDetails = null;
+                    }
 
-        this.$nextTick(() => {
-            this.reinitializePhotoSlider();
-        });
+                    this.$nextTick(() => {
+                        this.reinitializePhotoSlider();
+                    });
 
-    } catch (error) {
-        console.error("API Error:", error);
-    }
-},
+                } catch (error) {
+                    console.error("API Error:", error);
+                }
+            },
+            async loadEventsByTag() {
+                if (!this.searchTag) return;
+
+                try {
+                    const response = await assets_service.getEventsByTag(this.searchTag);
+                    this.list_eventDetails = response.data;
+                    this.featuredPhoto = null;
+                    this.selectedPhotoDetails = null;
+                    this.selectedVideo = null;
+
+                    // Optional: Reset slider
+                    this.$nextTick(() => {
+                        this.reinitializePhotoSlider();
+                    });
+                } catch (error) {
+                    console.error('Failed to load events by tag:', error);
+                }
+            },
+            formatDate(dateString) {
+                if (!dateString) return ""; // Handle empty values
+
+                const options = { day: '2-digit', month: 'long', year: 'numeric' };
+                return new Intl.DateTimeFormat('en-GB', options).format(new Date(dateString));
+            },
             selectPhoto(photo) {
                 this.featuredPhoto = photo.photo_fileName;
                 this.selectedPhotoDetails = photo;
@@ -240,46 +285,48 @@
                                     <h4 class="widget_title">Event Information</h4>
                                     <ul class="list">
                                         <li>
-                                            <span class="meta-title">Event ID:</span>
-
+                                            <span class="meta-title">Event Title:</span>
+                                            <br>
+                                            <span class="meta-sub">{{ list_eventDetails.event_title }}</span>
                                         </li> <br>
                                         <li>
-                                            <span class="meta-title">Organizing Agency:</span>
+                                            <span class="meta-title">Description:</span>
+                                            <br>
+                                            <span class="meta-sub">{{ list_eventDetails.event_description }}</span>
                                         </li> <br>
                                         <li>
                                             <span class="meta-title">Category:</span>
-                                        </li>
+                                            <br>
+                                            <span class="meta-sub">
+                                                <a href="#">
+                                                    {{ list_eventDetails.event_category }}
+                                                </a>
+                                            </span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Venue:</span>
+                                            <br>
+                                            <span class="meta-sub">{{ list_eventDetails.event_venue }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Date:</span>
+                                            <br>
+                                            <span class="meta-sub">{{ formatDate(list_eventDetails.event_date) }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Organizing Agency:</span>
+                                            <br>
+                                            <span class="meta-sub">
+                                                <a href="#">
+                                                    {{ list_eventDetails.event_organizingAgency }}
+                                                </a>
+                                            </span>
+                                        </li> <br>
                                     </ul>
                                 </aside>
-                                <aside class="single_sidebar_widget tag_cloud_widget">
-                                    <h4 class="widget_title">Tag Clouds</h4>
-                                    <ul class="list">
-                                        <li>
-                                        <a href="#">project</a>
-                                        </li>
-                                        <li>
-                                        <a href="#">love</a>
-                                        </li>
-                                        <li>
-                                        <a href="#">technology</a>
-                                        </li>
-                                        <li>
-                                        <a href="#">travel</a>
-                                        </li>
-                                        <li>
-                                        <a href="#">restaurant</a>
-                                        </li>
-                                        <li>
-                                        <a href="#">life style</a>
-                                        </li>
-                                        <li>
-                                        <a href="#">design</a>
-                                        </li>
-                                        <li>
-                                        <a href="#">illustration</a>
-                                        </li>
-                                    </ul>
-                                </aside>
+
+                                <TagClouds v-if="album_id" :albumId="album_id" />
+                                <RelatedEvents />
                             </div>
                         </div>
                     </div>
@@ -309,10 +356,27 @@
     }
 
     .meta-title{
-        text-transform: uppercase;
         font-family: Open Sans, sans-serif;
         font-size: .8rem;
         font-weight: 600;
+    }
+
+    .meta-sub{
+        font-size: .9rem;
+    }
+
+    .badge{
+        font-weight: bold;
+        color: white;
+        border-radius: 2rem;
+        cursor: pointer;
+        width: 95.02px;
+        height: 25px;
+        border: none;
+        background-color: #000033;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .meta-family{
@@ -362,7 +426,10 @@
         font-size: 14px;
         color: #888;
         font-style: italic;
-        }
+    }
+    .widget_title{
+        text-transform: uppercase;
+    }
 
 
 

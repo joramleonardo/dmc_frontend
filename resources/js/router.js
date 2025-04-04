@@ -8,11 +8,14 @@ import Login from './views/Login/Login.vue';
 import HomePage from './views/DMC/Landing/_Holder.vue';
 import Landing_Main from './views/DMC/Pages/Home/ComponentMain_Landing.vue';
 import Landing_SingleEvent from './views/DMC/Pages/Events/ComponentSection_SingleEvent.vue';
-import Events from './views/DMC/Pages/Events/ComponentsSection_Events.vue';
+import Events from './views/DMC/Pages/Events/ComponentSection_Events.vue';
+import EventsByTags from './views/DMC/Pages/Events/ComponentSection_EventsByTags.vue';
+import EventsByCategory from './views/DMC/Pages/Events/ComponentSection_EventsByCategory.vue';
+
+
 import PhotoGallery from './views/DMC/Pages/Photos/ComponentSection_PhotoGallery.vue';
 
 import Landing_Home from './views/DMC/Landing/Home.vue';
-import Landing_Events from './views/DMC/Landing/Events.vue';
 import Landing_Coverages from './views/DMC/Landing/Coverages.vue';
 import Landing_Photos from './views/DMC/Landing/Photos.vue';
 // import Landing_SingleVideo from './views/DMC/Landing/SingleVideo.vue';
@@ -49,42 +52,52 @@ const routes = [
         component: Events
     },
     {
+        path: '/events-tags',
+        name: 'events-tags',
+        component: EventsByTags
+    },
+    {
+        path: '/events-category',
+        name: 'events-category',
+        component: EventsByCategory
+    },
+    {
         path: '/',
         name: '',
         component: Landing_Main
     },
     {
-        path: '/holder',
-        name: '',
-        component: HomePage,
-        children: [
-            {
-                path: '/home',
-                name: 'home',
-                component: Landing_Home,
-            },
-            {
-                path: '/events',
-                name: 'events',
-                component: Landing_Events,
-            },
-            {
-                path: '/coverages',
-                name: 'coverages',
-                component: Landing_Coverages,
-            },
-            {
-                path: '/photos',
-                name: 'photos',
-                component: Landing_Photos,
-            },
-            {
-                path: '/single-event/:id',
-                name: 'single-event',
-                component: Landing_SingleEvent,
-            },
-        ]
+        path: '/single-event/:id',
+        name: 'single-event',
+        component: Landing_SingleEvent,
     },
+    // {
+    //     path: '/holder',
+    //     name: '',
+    //     component: HomePage,
+    //     children: [
+    //         {
+    //             path: '/home',
+    //             name: 'home',
+    //             component: Landing_Home,
+    //         },
+    //         {
+    //             path: '/coverages',
+    //             name: 'coverages',
+    //             component: Landing_Coverages,
+    //         },
+    //         {
+    //             path: '/photos',
+    //             name: 'photos',
+    //             component: Landing_Photos,
+    //         },
+    //         {
+    //             path: '/single-event/:id',
+    //             name: 'single-event',
+    //             component: Landing_SingleEvent,
+    //         },
+    //     ]
+    // },
 
 ];
 

@@ -1,7 +1,5 @@
 import { http, httpFile } from './http_service';
 
-
-
 export function getFeaturedEvents(){
     return http().get('/getFeaturedEvents');
 }
@@ -33,4 +31,16 @@ export async function getAllEventsSummary(params = {}) {
 
 export async function getEventYears() {
     return http().get('/getEventYears');
+}
+
+export function getTagsByAlbumId(albumId) {
+    return http().get(`/getTagsByAlbumId/${albumId}`);
+}
+
+
+
+
+export function getEventsByTag(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return http().get(`/getEventsByTag?${queryString}`);
 }

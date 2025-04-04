@@ -7354,3 +7354,15 @@ del {
 .switch-wrap {
 	margin-bottom: 10px
 }
+
+.single_sidebar_widget,
+.whats-news-wrapper,
+.most-recent-area,
+.trending-top-img,
+.thumb-wrapper,
+.trending-top,
+.card-img,
+.image-wrapper{
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}

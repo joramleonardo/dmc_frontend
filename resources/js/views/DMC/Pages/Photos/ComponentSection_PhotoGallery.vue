@@ -65,10 +65,22 @@
 <template>
 
     <div>
+        <!-- Preloader Start -->
+        <div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="preloader-circle"></div>
+                    <div class="preloader-img pere-text">
+                        <img src="myCustom/img/logo/stii.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <header>
             <Header />
         </header>
+
         <section class="blog_area section-padding">
             <div class="container">
                 <div class="row">

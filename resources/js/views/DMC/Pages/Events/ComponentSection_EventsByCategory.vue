@@ -12,22 +12,32 @@
                 searchKeyword: '',
                 currentPage: 1,
                 lastPage: 1,
+
+                selectedYear: '',
+                selectedMonth: '',
+
             };
         },
 
         watch: {
             '$route.query': {
-                handler() {
-                    this.initializeFromRoute();
+                handler(newQuery) {
+                    // console.log("Route changed!", newQuery);
+                    // this.loadEventSummaries(parseInt(newQuery.page || 1));
+
+                    this.searchKeyword = newQuery.search || '';
+                    this.currentPage = parseInt(newQuery.page || 1);
                     this.loadEventSummaries(this.currentPage);
+
                 },
-                immediate: true
-            },
+                immediate: false
+            }
 
         },
 
         mounted() {
             this.initializeFromRoute();
+            this.loadEventSummaries(this.currentPage);
         },
 
 
@@ -37,35 +47,43 @@
 
                 this.searchKeyword = typeof query.search !== 'undefined' ? query.search : '';
                 this.currentPage = query.page ? parseInt(query.page) : 1;
+
+                this.selectedYear = query.year || '';
+                this.selectedMonth = query.month || '';
             },
             async loadEventSummaries(page = 1) {
-            try {
-                const params = {
-                ...(this.searchKeyword && { search: this.searchKeyword }),
-                page
-                };
+                try {
+                    const params = {
+                        ...(this.searchKeyword && { search: this.searchKeyword }),
+                        ...(this.selectedYear && { year: this.selectedYear }),
+                        ...(this.selectedMonth && { month: this.selectedMonth }),
+                        page
+                    };
 
-                const response = await assets_service.getAllEventsSummary(params);
-                this.eventSummaries = response.data;
-                this.currentPage = response.data.current_page;
-                this.lastPage = response.data.last_page;
-            } catch (error) {
-                console.error("API Error:", error);
-            }
+                    const response = await assets_service.getAllEventsSummary(params);
+                    this.eventSummaries = response.data;
+                    this.currentPage = response.data.current_page;
+                    this.lastPage = response.data.last_page;
+                } catch (error) {
+                    console.error("API Error:", error);
+                }
             },
             applyFilters() {
                 const query = {
                     ...(this.searchKeyword && { search: this.searchKeyword }),
-                    page: 1
+                    ...(this.selectedYear && { year: this.selectedYear }),
+                    ...(this.selectedMonth && { month: this.selectedMonth }),
+                    page: 1 // reset page
                 };
 
+                console.log("Applying filters with query:", query);
                 this.$router.push({ query });
             },
             goToPage(page) {
                 if (page >= 1 && page <= this.lastPage) {
                     const query = {
-                    ...this.$route.query,
-                    page
+                        ...this.$route.query,
+                        page
                     };
                     this.$router.push({ query });
                 }
@@ -75,6 +93,12 @@
                 if (!dateString) return "";
                 const options = { day: '2-digit', month: 'long', year: 'numeric' };
                 return new Intl.DateTimeFormat('en-GB', options).format(new Date(dateString));
+            },
+            onMonthYearChange(event) {
+                const [year, month] = event.target.value.split('-');
+                this.selectedYear = year;
+                this.selectedMonth = month;
+                this.applyFilters();
             }
         }
     };
@@ -85,6 +109,17 @@
 <template>
 
     <div>
+        <!-- Preloader Start -->
+        <div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="preloader-circle"></div>
+                    <div class="preloader-img pere-text">
+                        <img src="myCustom/img/logo/stii.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <header>
             <Header />
@@ -147,61 +182,20 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
-                            <!-- SEARCH WIDGET -->
-                            <aside class="single_sidebar_widget search_widget">
-                                <form @submit.prevent="applyFilters">
-                                    <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <input v-model="searchKeyword" class="form-control" placeholder="Search Keyword"/>
-                                            <div class="input-group-append">
-                                                <button class="btns" type="submit">
-                                                    <i class="ti-search"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </aside>
                             <!-- FILTER YEAR OR MONTH WIDGET -->
-                            <aside>
-
+                            <aside class="single_sidebar_widget" v-if="true">
+                                <h4 class="widget_title">Filter by Year & Month</h4>
+                                <div class="form-group mb-2">
+                                    <input
+                                        type="month"
+                                        class="form-control"
+                                        @change="onMonthYearChange"
+                                    />
+                                </div>
                             </aside>
 
                             <!-- POPULAR EVENTS WIDGET -->
                             <PopularEvents />
-
-                            <!-- TAG CLOUDS WIDGET -->
-                            <aside class="single_sidebar_widget tag_cloud_widget">
-                                <h4 class="widget_title">Tag Clouds</h4>
-                                <ul class="list">
-                                    <li>
-                                        <a href="#">project</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">love</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">technology</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">travel</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">restaurant</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">life style</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">illustration</a>
-                                    </li>
-                                </ul>
-                            </aside>
-
-
                         </div>
                     </div>
                 </div>

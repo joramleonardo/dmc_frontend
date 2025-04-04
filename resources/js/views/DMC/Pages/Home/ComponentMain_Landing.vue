@@ -50,7 +50,7 @@
 
 
             <!-- Whats New Start -->
-            <section class="whats-news-area pt-50 pb-20 gray-bg">
+            <section class="whats-news-area pt-10 pb-20 gray-bg">
                 <div class="container">
                     <div class="row">
                         <RecentEvents />
