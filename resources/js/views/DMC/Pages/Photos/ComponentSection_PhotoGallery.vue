@@ -135,7 +135,7 @@
 </template>
 
 <style scoped>
-    .gallery-container {
+    /* .gallery-container {
     column-count: 3;
     column-gap: 1rem;
     }
@@ -143,23 +143,33 @@
     .gallery-item {
     break-inside: avoid;
     margin-bottom: 1rem;
+    } */
+
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 1rem;
+    }
+
+    .gallery-item {
+        width: 100%;
     }
 
     .image-wrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
     }
 
     .image-wrapper img {
-    width: 100%;
-    display: block;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+        width: 100%;
+        display: block;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
     }
 
     .image-wrapper:hover img {
-    transform: scale(1.05);
+        transform: scale(1.05);
     }
 
     .hover-caption {
@@ -197,41 +207,41 @@
     }
 
     .zoom-modal {
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
     .zoomed-img {
-    max-width: 90%;
-    max-height: 80vh;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        max-width: 90%;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
 
     .caption {
-    color: #fff;
-    margin-top: 10px;
-    font-size: 14px;
-    text-align: center;
+        color: #fff;
+        margin-top: 10px;
+        font-size: 14px;
+        text-align: center;
     }
 
     .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #fff;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 10000;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: #fff;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 10000;
     }
 
 

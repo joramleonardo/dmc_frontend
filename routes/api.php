@@ -19,3 +19,4 @@ Route::get('/getTagsByAlbumId/{album_id}', [AssetsController::class, 'getAllTags
 Route::get('/getEventsByTag', [AssetsController::class, 'getEventsByTag']);
 
 
+Route::get('/getRelatedEvents/{album_id}', [AssetsController::class, 'getRelatedEvents']);

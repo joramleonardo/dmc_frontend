@@ -44,3 +44,7 @@ export function getEventsByTag(params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return http().get(`/getEventsByTag?${queryString}`);
 }
+
+export function getRelatedEvents(albumId) {
+    return http().get(`/getRelatedEvents/${albumId}`);
+}

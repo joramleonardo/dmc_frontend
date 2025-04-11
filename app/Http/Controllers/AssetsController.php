@@ -304,6 +304,37 @@ class AssetsController extends Controller
     }
 
 
+    public function getRelatedEvents($album_id)
+    {
+        // Get current event
+        $current = DB::table('tbl_album')
+            ->where('album_id', $album_id)
+            ->first();
+
+        if (!$current) {
+            return response()->json([], 404);
+        }
+
+        // Find related events
+        $related = DB::table('tbl_album')
+            ->leftJoin('tbl_album_status', 'tbl_album.album_id', '=', 'tbl_album_status.album_id')
+            ->where('tbl_album.event_category', $current->event_category)
+            ->where('tbl_album.album_id', '!=', $album_id)
+            ->where('tbl_album_status.album_status', 'Published')
+            ->where('tbl_album.is_deleted', 0)
+            ->orderByDesc('tbl_album.created_at')
+            ->limit(3)
+            ->get([
+                'tbl_album.album_id',
+                'tbl_album.event_title',
+                'tbl_album.event_category',
+                'tbl_album.event_organizingAgency as organizing_agency',
+                DB::raw('(SELECT photo_fileName FROM tbl_photo WHERE tbl_photo.album_id = tbl_album.album_id ORDER BY created_at ASC LIMIT 1) as thumbnail')
+            ]);
+
+        return response()->json($related);
+    }
+
 
 
 

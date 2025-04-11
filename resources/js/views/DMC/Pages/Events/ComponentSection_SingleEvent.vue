@@ -28,6 +28,11 @@
                 selectedPhotoDetails: null,
                 selectedVideo: null,
                 activeItem: null,
+                showRequestModal: false,
+                requestForm: {
+                    name: '',
+                    email: ''
+                }
             }
         },
         // mounted(){
@@ -166,25 +171,61 @@
             },
 
             reinitializePhotoSlider() {
-            const $slider = $(this.$refs.photoSlider);
+                const $slider = $(this.$refs.photoSlider);
 
-            if ($slider.hasClass('slick-initialized')) {
-                $slider.slick('unslick');
+                if ($slider.hasClass('slick-initialized')) {
+                    $slider.slick('unslick');
+                }
+
+                $slider.slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    arrows: false,
+                    dots: true,
+                    responsive: [
+                    { breakpoint: 992, settings: { slidesToShow: 2 } },
+                    { breakpoint: 768, settings: { slidesToShow: 1 } }
+                    ]
+                });
+            },
+            openRequestModal() {
+                this.showRequestModal = true;
+            },
+
+            closeRequestModal() {
+                this.showRequestModal = false;
+            },
+            copyDetails() {
+                const details = `
+                Event Title: ${this.list_eventDetails.event_title || 'N/A'}
+                Event Venue: ${this.list_eventDetails.event_venue || 'N/A'}
+                Event Date: ${this.formatDate(this.list_eventDetails.event_date) || 'N/A'}
+                Event Organizing Agency: ${this.list_eventDetails.event_organizingAgency || 'N/A'}
+                    `.trim();
+
+                    // Copy to clipboard
+                    navigator.clipboard.writeText(details)
+                    .then(() => {
+                        this.$toast.open({
+                            message: 'Event details copied to clipboard!',
+                            type: 'success',
+                            position: 'bottom-right',
+                            duration: 5000,
+                        });
+
+                        this.closeRequestModal();
+                    })
+                    .catch(err => {
+                        console.error("Failed to copy: ", err);
+                        alert("Failed to copy to clipboard. Please try manually.");
+                    });
+
             }
 
-            $slider.slick({
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 3000,
-                arrows: false,
-                dots: true,
-                responsive: [
-                { breakpoint: 992, settings: { slidesToShow: 2 } },
-                { breakpoint: 768, settings: { slidesToShow: 1 } }
-                ]
-            });
-            }
+
+
         }
     }
 </script>
@@ -322,15 +363,15 @@
                                                 </a>
                                             </span>
                                         </li> <br><br>
-                                        <button class="genric-btn primary-border small" type="submit">
-                                            Request Photo
+                                        <button class="genric-btn primary-border small" type="submit" @click="openRequestModal">
+                                            Request Copy
                                         </button>
 
                                     </ul>
                                 </aside>
 
                                 <TagClouds v-if="album_id" :albumId="album_id" />
-                                <RelatedEvents />
+                                <RelatedEvents :albumId="album_id" />
                             </div>
                         </div>
                     </div>
@@ -338,7 +379,28 @@
             </section>
 
         </main>
+
+        <div v-if="showRequestModal" class="modal-overlay">
+            <div class="modal-content">
+                <h3>Request Photo</h3>
+
+                <p>
+                    Request Material
+                    Click the button below to copy the material details below and email it at <strong>default@stii.dost.gov.ph</strong>
+                </p>
+
+
+                <div class="modal-actions">
+                    <button class="genric-btn primary small" @click="copyDetails">Copy Details</button>
+                    <button class="genric-btn danger small" @click="closeRequestModal">Close</button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+
+
 </template>
 
 <style lang="css" scoped>
@@ -435,6 +497,34 @@
         text-transform: uppercase;
     }
 
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.6);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
 
 
 </style>
