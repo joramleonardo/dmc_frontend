@@ -1,0 +1,102 @@
+<template>
+    <div class="col-lg-4">
+        <div class="most-recent-area">
+            <div class="small-tittle mb-20">
+                <h4>Upcoming Events</h4>
+            </div>
+
+            <!-- First (highlighted) event -->
+            <div v-if="events.length" class="most-recent mb-40">
+                <div class="most-recent-img">
+                    <img :src="'/storage/images/' + events[0].event_banner" alt="Banner" class="big-banner">
+                    <div class="most-recent-cap">
+                        <h4>{{ events[0].event_title }}</h4>
+                        <p><strong>Date:</strong> {{ events[0].event_date }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Remaining events -->
+            <div v-for="(event, index) in events.slice(1)" :key="index" class="most-recent-single">
+                <div class="most-recent-images">
+                    <img :src="'/storage/images/' + event.event_banner" alt="Thumbnail" />
+                </div>
+                <div class="most-recent-capt">
+                    <h4>{{ event.event_title }}</h4>
+                    <p><strong>Date:</strong> {{event.event_date }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script>
+    import { getUpcomingEvents } from '../../../../services/assets_service';
+
+    export default {
+        data() {
+            return {
+                events: []
+            };
+        },
+        mounted() {
+            this.loadUpcomingEvents();
+        },
+        methods: {
+            async loadUpcomingEvents() {
+                try {
+                    const response = await getUpcomingEvents();
+                    this.events = response.data;
+                } catch (error) {
+                    console.error("Failed to load upcoming events", error);
+                }
+            },
+            formatDate(dateStr) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return new Date(dateStr).toLocaleDateString(undefined, options);
+            }
+        }
+    };
+</script>
+
+<style scoped>
+.most-recent-img img.big-banner {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.most-recent-cap {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.most-recent-single {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.most-recent-images img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 15px;
+}
+
+.most-recent-capt h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.most-recent-capt p {
+    margin: 2px 0;
+    font-size: 13px;
+    color: #555;
+}
+</style>

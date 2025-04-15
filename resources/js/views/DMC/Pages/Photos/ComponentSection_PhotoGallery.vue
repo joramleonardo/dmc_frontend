@@ -100,7 +100,7 @@
                                     style="cursor: zoom-in"
                                 />
                                 <div class="hover-caption">
-                                    <router-link :to="{ name: 'single-event',  params: { id: photo.album_id }, query: { photo: photo.photo_id }}" >
+                                    <router-link :to="{ name: 'single-event',  params: { id: photo.album_id }, query: { photo: photo.photo_id }}" class="photo-title">
                                         {{ photo.album_title || 'Untitled Event' }}
                                     </router-link>
                                 </div>
@@ -185,6 +185,7 @@
         transition: opacity 0.3s ease;
         font-size: 12px;
     }
+
 
     .image-wrapper:hover .hover-caption {
         opacity: 1;

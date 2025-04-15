@@ -20,6 +20,10 @@ export function getPopularEvents() {
     return http().get('/getPopularEvents');
 }
 
+export function getPopularEvents_Footer() {
+    return http().get('/getPopularEvents_Footer');
+}
+
 export function getAllPhotos(page = 1) {
     return http().get(`/getAllPhotos?page=${page}`);
 }
@@ -47,4 +51,9 @@ export function getEventsByTag(params = {}) {
 
 export function getRelatedEvents(albumId) {
     return http().get(`/getRelatedEvents/${albumId}`);
+}
+
+
+export function getUpcomingEvents() {
+    return http().get('/upcoming-events');
 }

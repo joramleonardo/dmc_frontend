@@ -64,4 +64,13 @@
         margin-right: 15px;
     }
 
+    .blog_area a:hover,
+    .blog_area a :hover {
+	background: -webkit-linear-gradient(131deg, #cd0000 0%, #cd0000 99%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-decoration: none;
+	transition: .4s
+}
+
 </style>

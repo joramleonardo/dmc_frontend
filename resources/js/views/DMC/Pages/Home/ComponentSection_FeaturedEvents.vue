@@ -132,7 +132,7 @@
     }
 
     .trend-category {
-        background: #ff4d4d; /* Red background */
+        background: #cd0000; /* Red background */
         color: white;
         font-weight: bold;
         padding: 5px 10px;
@@ -143,7 +143,7 @@
     .trend-top-cap span {
         font-size: 12px; /* Category smaller */
         padding: 5px 10px;
-        background: #ff4d4d;
+        background: #cd0000;
         color: white;
         border-radius: 5px;
     }

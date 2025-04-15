@@ -2,9 +2,14 @@
     import * as assets_service from '../../../../services/assets_service.js';
     import Header from '../Layouts/Header.vue';
     import PopularEvents from './ComponentSection_PopularEvents.vue';
+    import Footer from '../Layouts/Footer.vue';
 
     export default {
-        components: { Header, PopularEvents },
+        components: {
+            Header,
+            PopularEvents,
+            Footer
+        },
 
         data() {
             return {
@@ -15,6 +20,7 @@
 
                 selectedYear: '',
                 selectedMonth: '',
+                showResultText: false, // 👈 new reactive flag
 
             };
         },
@@ -67,6 +73,12 @@
                 } catch (error) {
                     console.error("API Error:", error);
                 }
+
+                this.showResultText =
+                    this.searchKeyword.trim() !== '' &&
+                    this.eventSummaries.data &&
+                    this.eventSummaries.data.length > 0;
+
             },
             applyFilters() {
                 const query = {
@@ -127,6 +139,20 @@
 
         <section class="blog_area section-padding">
             <div class="container">
+                <div class="row result-text" v-if="showResultText">
+
+                    <div class="cl-xl-7 col-lg-8 col-md-10">
+                        <!-- Section Tittle -->
+                        <div class="section-tittles mb-20">
+                            <span class="display-result-text">Displaying results for
+                                <!-- <a class="display-result-text-keyword">
+                                    {{ tagName }}
+                                </a> -->
+                                <strong>{{ this.searchKeyword }}</strong>
+                            </span>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
@@ -198,8 +224,6 @@
                                 </form>
                             </aside> -->
 
-
-
                             <!-- FILTER YEAR OR MONTH WIDGET -->
                             <aside class="single_sidebar_widget" v-if="true">
                                 <h4 class="widget_title">Filter by Year & Month</h4>
@@ -217,6 +241,7 @@
 
                             <!-- POPULAR EVENTS WIDGET -->
                             <PopularEvents />
+                            <!-- CHANGE TO UPCOMING EVENTS-->
 
 
 
@@ -225,6 +250,9 @@
                 </div>
             </div>
         </section>
+
+        <Footer />
+
     </div>
 
 </template>
@@ -245,5 +273,19 @@
         border-radius: 5px;
         margin-right: 15px;
     }
+
+    .display-result-text{
+        font-style: italic;
+        text-transform: none;
+    }
+    .display-result-text-keyword{
+        text-transform: uppercase;
+        font-style: normal;
+        font-weight: 800;
+        color: #000000;
+        margin-left: 5px;
+
+    }
+
 
 </style>

@@ -3337,7 +3337,8 @@ hr {
 }
 
 .trending-area .trending-main .trending-top .trend-top-img .trend-top-cap h2 a:hover {
-	color: #f75a5a
+	color: #cd0000;
+    text-decoration: underline;
 }
 
 .trending-area .trending-main .trending-top .trend-top-img .trend-top-cap p {
@@ -3630,9 +3631,15 @@ hr {
 
 .whats-news-area .whats-right-single .whats-right-cap h4 a:hover,
 .about-area2 .whats-right-single .whats-right-cap h4 a:hover,
-.contact-section .whats-right-single .whats-right-cap h4 a:hover {
-	color: #000033
+.contact-section .whats-right-single .whats-right-cap h4 a:hover,
+.whats-news-area .whats-news-single .whates-caption h4 a:hover,
+.about-area2 .whats-news-single .whates-caption h4 a:hover,
+.contact-section .whats-news-single .whates-caption h4 a:hover {
+	color: #0a0a6d;
+    text-decoration: underline;
 }
+
+
 
 .whats-news-area .whats-right-single .whats-right-cap p,
 .about-area2 .whats-right-single .whats-right-cap p,
@@ -3855,7 +3862,12 @@ hr {
 .whats-news-area .most-recent-area .most-recent-single .most-recent-capt h4 a:hover,
 .about-area2 .most-recent-area .most-recent-single .most-recent-capt h4 a:hover,
 .contact-section .most-recent-area .most-recent-single .most-recent-capt h4 a:hover {
-	color: #000033
+	color: #0a0a6d;
+    text-decoration: underline;
+}
+.footer-area .single-footer-caption .whats-right-single .whats-right-cap h4:hover{
+
+    text-decoration: underline;
 }
 
 .whats-news-area .most-recent-area .most-recent-single .most-recent-capt p,
@@ -4633,11 +4645,12 @@ hr {
 
 .blog_area a:hover,
 .blog_area a :hover {
-	background: -webkit-linear-gradient(131deg, #000033 0%, #000033 99%);
+	/* background: -webkit-linear-gradient(131deg, #0a0a6d 0%, #0a0a6d 99%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	text-decoration: none;
-	transition: .4s
+	transition: .4s; */
+
+    text-decoration: underline !important
 }
 
 .single-blog {
@@ -5138,7 +5151,7 @@ hr {
 	/* left: 0px; */
 	display: block;
 	color: #fff;
-	background-color: #000033;
+	background-color: #cd0000;
 	padding: 5px 10px;
 	border-radius: 5px;
 }

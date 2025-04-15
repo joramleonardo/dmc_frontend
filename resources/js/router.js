@@ -11,6 +11,7 @@ import Landing_SingleEvent from './views/DMC/Pages/Events/ComponentSection_Singl
 import Events from './views/DMC/Pages/Events/ComponentSection_Events.vue';
 import EventsByTags from './views/DMC/Pages/Events/ComponentSection_EventsByTags.vue';
 import EventsByCategory from './views/DMC/Pages/Events/ComponentSection_EventsByCategory.vue';
+import UpcomingSingleEvent from './views/DMC/Pages/Events/ComponentSection_UpcomingSingleEvent.vue';
 
 
 import PhotoGallery from './views/DMC/Pages/Photos/ComponentSection_PhotoGallery.vue';
@@ -70,6 +71,11 @@ const routes = [
         path: '/single-event/:id',
         name: 'single-event',
         component: Landing_SingleEvent,
+    },
+    {
+        path: '/upcoming-single-event/:id',
+        name: 'upcoming-single-event',
+        component: UpcomingSingleEvent,
     },
     // {
     //     path: '/holder',

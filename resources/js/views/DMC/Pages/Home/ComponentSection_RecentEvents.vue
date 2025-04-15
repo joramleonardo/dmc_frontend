@@ -95,7 +95,7 @@
                                                 </router-link>
                                                 <!-- </a> -->
                                             </h4>
-                                            <span>by {{ list_recentEvents[0].organizing_agency }} - {{ formatDate(list_recentEvents[0].event_date) }}</span>
+                                            <span >by <strong style="color: #cd0000;"> {{ list_recentEvents[0].organizing_agency }} </strong> </span>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
 
     .whats-right-cap span {
         font-size: 12px;
-        color: #007bff;
+        color: #cd0000;
         font-weight: 600;
         text-transform: uppercase;
     }

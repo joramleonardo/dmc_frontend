@@ -64,6 +64,8 @@
 
 
         </main>
+
         <Footer />
+
     </div>
 </template>

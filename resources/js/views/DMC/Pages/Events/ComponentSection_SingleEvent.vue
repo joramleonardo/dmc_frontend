@@ -385,8 +385,7 @@
                 <h3>Request Photo</h3>
 
                 <p>
-                    Request Material
-                    Click the button below to copy the material details below and email it at <strong>default@stii.dost.gov.ph</strong>
+                    Click the button below to copy the event details and email it at <strong>default@stii.dost.gov.ph</strong>
                 </p>
 
 
