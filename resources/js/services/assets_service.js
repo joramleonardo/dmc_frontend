@@ -57,3 +57,7 @@ export function getRelatedEvents(albumId) {
 export function getUpcomingEvents() {
     return http().get('/upcoming-events');
 }
+
+export function getUpcomingEventById(id) {
+    return http().get(`/getUpcomingEventById/${id}`);
+}

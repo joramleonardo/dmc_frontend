@@ -36,6 +36,7 @@
         "mdbvue": "^6.7.3",
         "slick-carousel": "^1.8.1",
         "sweetalert2": "^11.4.23",
+        "swiper": "^9.4.1",
         "vue-chartjs": "3.5.1",
         "vue-router": "^3.5.2",
         "vue-sweetalert2": "^5.0.2",

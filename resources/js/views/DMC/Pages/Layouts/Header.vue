@@ -24,19 +24,61 @@
 
 <template>
 
-    <div class="header-area">
+
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container position-relative d-flex align-items-center">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.png" alt=""> -->
+            <h1 class="sitename">DMC</h1><span>.</span>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="#hero" class="active">Home</a></li>
+                <li class="dropdown"><a href="about.html"><span>Events</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                    <li><a href="team.html">Photos</a></li>
+                    <li><a href="team.html">Videos</a></li>
+                    <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 2</a></li>
+                        <li><a href="#">Category 3</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <div class="header-social-links">
+                <form @submit.prevent="performSearch">
+                    <input
+                    v-model="searchKeyword"
+                    class="form-control"
+                    placeholder="Search events, photos, videos..."
+                    />
+                </form>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- <div class="header-area">
         <div class="main-header ">
             <div class="header-bottom header-sticky">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-6 col-lg-6 col-md-12 header-flex">
-                            <!-- sticky -->
                             <div class="sticky-logo">
                                 <a href="index.html">
                                     <img src="myCustom/img/logo/logo.png" alt="">
                                 </a>
                             </div>
-                            <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block">
                                 <nav>
                                     <ul id="navigation">
@@ -45,18 +87,9 @@
                                                 Home
                                             </a>
                                         </li>
-                                        <li><a href="#">Category</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">Anniversaries</a></li>
-                                                <li><a href="blog_details.html">Awarding Ceremonies</a></li>
-                                                <li><a href="elements.html">Convention</a></li>
-                                                <li><a href="elements.html">Exhibits</a></li>
-                                                <li><a href="elements.html">Forums</a></li>
-                                            </ul>
-                                        </li>
                                         <li><a href="/events">Events</a></li>
                                         <li><a href="/photos">Photos</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="#">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -70,7 +103,6 @@
                                 />
                             </form>
                         </div>
-                        <!-- Mobile Menu -->
                         <div class="col-12">
                             <div class="mobile_menu d-block d-md-none"></div>
                         </div>
@@ -78,6 +110,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </template>

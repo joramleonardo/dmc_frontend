@@ -18,6 +18,7 @@ use App\VideoTags;
 
 use App\EventTrackingLog;
 use App\Comment;
+use App\UpcomingEvent;
 
 class AssetsController extends Controller
 {
@@ -32,7 +33,7 @@ class AssetsController extends Controller
         ->where('tbl_album_status.album_status', 'Published')
         ->orderBy('tbl_album.created_at', 'desc')
         ->groupBy('tbl_album.album_id')
-        ->limit(3)
+        ->limit(7)
         ->get([
             DB::raw('(SELECT tbl_photo.photo_fileName
                       FROM tbl_photo
@@ -127,6 +128,20 @@ class AssetsController extends Controller
         $event->increment('views_count');
 
         return response()->json($event, 200);
+    }
+
+    public function getUpcomingEventById($id)
+    {
+        $event = DB::table('upcoming_events')
+            ->where('id', $id)
+            ->where('is_deleted', 0)
+            ->first();
+
+        if (!$event) {
+            return response()->json(['message' => 'Event not found'], 404);
+        }
+
+        return response()->json($event);
     }
 
     public function getPopularEvents(Request $request)

@@ -95,7 +95,10 @@
                                                 </router-link>
                                                 <!-- </a> -->
                                             </h4>
-                                            <span >by <strong style="color: #cd0000;"> {{ list_recentEvents[0].organizing_agency }} </strong> </span>
+                                            <span >
+                                                by <strong style="color: #cd0000;"> {{ list_recentEvents[0].organizing_agency }} </strong>
+                                                on {{ formatDate(list_recentEvents[0].event_date) }}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

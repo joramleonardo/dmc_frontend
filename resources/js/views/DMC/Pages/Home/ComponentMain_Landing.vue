@@ -24,33 +24,15 @@
 <template>
     <div >
 
-        <!-- Preloader Start -->
-        <div id="preloader-active">
-            <div class="preloader d-flex align-items-center justify-content-center">
-                <div class="preloader-inner position-relative">
-                    <div class="preloader-circle"></div>
-                    <div class="preloader-img pere-text">
-                        <img src="myCustom/img/logo/stii.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Preloader Start -->
+        <!-- Header -->
         <header>
-            <!-- Header Start -->
             <Header />
-            <!-- Header End -->
         </header>
 
+        <!-- Body -->
         <main>
-            <!-- Trending Area Start -->
             <FeaturedEvents />
-            <!-- Trending Area End -->
-
-
-            <!-- Whats New Start -->
-            <section class="whats-news-area pt-10 pb-20 gray-bg">
+            <!-- <section class="whats-news-area pt-10 pb-20 gray-bg">
                 <div class="container">
                     <div class="row">
                         <RecentEvents />
@@ -58,14 +40,11 @@
 
                     </div>
                 </div>
-            </section>
-            <!-- Whats New End -->
-
-
-
+            </section> -->
         </main>
 
-        <Footer />
+        <!-- Footer -->
+        <!-- <Footer /> -->
 
     </div>
 </template>
