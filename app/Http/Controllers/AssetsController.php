@@ -33,7 +33,7 @@ class AssetsController extends Controller
         ->where('tbl_album_status.album_status', 'Published')
         ->orderBy('tbl_album.created_at', 'desc')
         ->groupBy('tbl_album.album_id')
-        ->limit(7)
+        ->limit(5)
         ->get([
             DB::raw('(SELECT tbl_photo.photo_fileName
                       FROM tbl_photo
@@ -59,7 +59,7 @@ class AssetsController extends Controller
             ->where('tbl_album_status.album_status', 'Published')
             ->orderBy('tbl_album.created_at', 'desc')
             ->groupBy('tbl_album.album_id')
-            ->limit(5)
+            ->limit(7)
             ->get([
                 DB::raw('(SELECT tbl_photo.photo_fileName
                           FROM tbl_photo
@@ -166,7 +166,7 @@ class AssetsController extends Controller
                 'tbl_album.album_id',
                 'tbl_album.id'
             ])
-            ->limit(5)
+            ->limit(10)
             ->get();
 
         return response()->json($data, 200);

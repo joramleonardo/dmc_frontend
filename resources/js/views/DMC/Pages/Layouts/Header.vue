@@ -24,13 +24,88 @@
 
 <template>
 
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <a href="#" class="logo">
+                            DMC
+                        </a>
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+                            <li class="has-sub">
+                                <a href="javascript:void(0)">Browse</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/events">Events</a></li>
+                                    <li><a href="/photos">Photos</a></li>
+                                    <li><a href="#">Videos</a></li>
+                                    <li><a href="#">Categories</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="#">Contact Us</a></li>
+                            <li class="scroll-to-section">
+                                <form @submit.prevent="performSearch" style="width: 300px;">
+                                    <input
+                                    v-model="searchKeyword"
+                                    class="form-control"
+                                    placeholder="Search events, photos, videos..."
+                                    />
+                                </form>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <header id="header" class="header d-flex align-items-center sticky-top">
+    <!-- <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <a href="/" class="logo">
+                            <img src="hexaShop/assets/images/stii-logo.png">
+                        </a>
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">Browse</a>
+                                <ul>
+                                    <li><a href="/events">Events</a></li>
+                                    <li><a href="#">Categories</a></li>
+                                    <li><a href="/photos">Photos</a></li>
+                                    <li><a href="#">Videos</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Contact</a></li>
+                            <li>
+                                <form @submit.prevent="performSearch" style="display: flex; align-items: center; width: 400px;">
+                                    <input
+                                    v-model="searchKeyword"
+                                    class="form-control"
+                                    placeholder="Search events, photos, videos..."
+                                    />
+                                </form>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header> -->
+
+    <!-- <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container position-relative d-flex align-items-center">
 
             <a href="index.html" class="logo d-flex align-items-center me-auto">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.png" alt=""> -->
             <h1 class="sitename">DMC</h1><span>.</span>
             </a>
 
@@ -66,7 +141,7 @@
             </div>
 
         </div>
-    </header>
+    </header> -->
 
     <!-- <div class="header-area">
         <div class="main-header ">

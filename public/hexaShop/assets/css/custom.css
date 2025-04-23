@@ -1,0 +1,50 @@
+/* Base for all screen sizes */
+.container,
+.wide-container {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Small devices (≥576px) */
+@media (min-width: 576px) {
+  .container,
+  .wide-container {
+    max-width: 540px;
+  }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  .container,
+  .wide-container {
+    max-width: 720px;
+  }
+}
+
+/* Large devices (≥992px) */
+@media (min-width: 992px) {
+  .container,
+  .wide-container {
+    max-width: 960px;
+  }
+}
+
+/* Extra large devices (≥1200px) */
+@media (min-width: 1200px) {
+  .container,
+  .wide-container {
+    max-width: 1500px;
+  }
+}
+
+/* Optional: Ultra-wide (≥1400px) */
+/* @media (min-width: 1400px) {
+  .container,
+  .wide-container {
+    max-width: 2000px;
+  }
+} */
+
