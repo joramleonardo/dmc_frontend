@@ -90,6 +90,8 @@
             $(window).scroll(function () {
               checkSection();
             });
+
+
         </script>
 
         {{-- <script>

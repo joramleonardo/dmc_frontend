@@ -1,12 +1,12 @@
 /*!
- * jQuery UI CSS Framework 1.13.2
- * http://jqueryui.com
+ * jQuery UI CSS Framework 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/category/theming/
+ * https://api.jqueryui.com/category/theming/
  */
 
 /* Layout helpers
@@ -50,7 +50,6 @@
 	left: 0;
 	position: absolute;
 	opacity: 0;
-	-ms-filter: "alpha(opacity=0)"; /* support: IE8 */
 }
 
 .ui-front {
@@ -96,14 +95,14 @@
 	height: 100%;
 }
 /*!
- * jQuery UI Accordion 1.13.2
- * http://jqueryui.com
+ * jQuery UI Accordion 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/accordion/#theming
+ * https://api.jqueryui.com/accordion/#theming
  */
 .ui-accordion .ui-accordion-header {
 	display: block;
@@ -119,14 +118,14 @@
 	overflow: auto;
 }
 /*!
- * jQuery UI Autocomplete 1.13.2
- * http://jqueryui.com
+ * jQuery UI Autocomplete 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/autocomplete/#theming
+ * https://api.jqueryui.com/autocomplete/#theming
  */
 .ui-autocomplete {
 	position: absolute;
@@ -135,14 +134,14 @@
 	cursor: default;
 }
 /*!
- * jQuery UI Button 1.13.2
- * http://jqueryui.com
+ * jQuery UI Button 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/button/#theming
+ * https://api.jqueryui.com/button/#theming
  */
 .ui-button {
 	padding: .4em 1em;
@@ -155,10 +154,7 @@
 	text-align: center;
 	-webkit-user-select: none;
 	-moz-user-select: none;
-	user-select: none;
-
-	/* Support: IE <= 11 */
-	overflow: visible;
+	     user-select: none;
 }
 
 .ui-button,
@@ -209,21 +205,21 @@ input.ui-button.ui-icon-notext .ui-icon {
 }
 
 /* workarounds */
-/* Support: Firefox 5 - 40 */
+/* Support: Firefox 5 - 125+ */
 input.ui-button::-moz-focus-inner,
 button.ui-button::-moz-focus-inner {
 	border: 0;
 	padding: 0;
 }
 /*!
- * jQuery UI Checkboxradio 1.13.2
- * http://jqueryui.com
+ * jQuery UI Checkboxradio 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/checkboxradio/#theming
+ * https://api.jqueryui.com/checkboxradio/#theming
  */
 
 .ui-checkboxradio-label .ui-icon-background {
@@ -250,14 +246,14 @@ button.ui-button::-moz-focus-inner {
 	pointer-events: none;
 }
 /*!
- * jQuery UI Controlgroup 1.13.2
- * http://jqueryui.com
+ * jQuery UI Controlgroup 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/controlgroup/#theming
+ * https://api.jqueryui.com/controlgroup/#theming
  */
 
 .ui-controlgroup {
@@ -305,9 +301,6 @@ button.ui-button::-moz-focus-inner {
 
 /* Spinner specific style fixes */
 .ui-controlgroup-vertical .ui-spinner-input {
-
-	/* Support: IE8 only, Android < 4.4 only */
-	width: 75%;
 	width: calc( 100% - 2.4em );
 }
 .ui-controlgroup-vertical .ui-spinner .ui-spinner-up {
@@ -315,14 +308,14 @@ button.ui-button::-moz-focus-inner {
 }
 
 /*!
- * jQuery UI Datepicker 1.13.2
- * http://jqueryui.com
+ * jQuery UI Datepicker 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/datepicker/#theming
+ * https://api.jqueryui.com/datepicker/#theming
  */
 .ui-datepicker {
 	width: 17em;
@@ -500,14 +493,14 @@ button.ui-button::-moz-focus-inner {
 	top: .3em;
 }
 /*!
- * jQuery UI Dialog 1.13.2
- * http://jqueryui.com
+ * jQuery UI Dialog 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/dialog/#theming
+ * https://api.jqueryui.com/dialog/#theming
  */
 .ui-dialog {
 	position: absolute;
@@ -601,25 +594,25 @@ button.ui-button::-moz-focus-inner {
 	cursor: move;
 }
 /*!
- * jQuery UI Draggable 1.13.2
- * http://jqueryui.com
+ * jQuery UI Draggable 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 .ui-draggable-handle {
 	touch-action: none;
 }
 /*!
- * jQuery UI Menu 1.13.2
- * http://jqueryui.com
+ * jQuery UI Menu 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/menu/#theming
+ * https://api.jqueryui.com/menu/#theming
  */
 .ui-menu {
 	list-style: none;
@@ -634,8 +627,6 @@ button.ui-button::-moz-focus-inner {
 .ui-menu .ui-menu-item {
 	margin: 0;
 	cursor: pointer;
-	/* support: IE10, see #8844 */
-	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }
 .ui-menu .ui-menu-item-wrapper {
 	position: relative;
@@ -676,14 +667,14 @@ button.ui-button::-moz-focus-inner {
 	right: 0;
 }
 /*!
- * jQuery UI Progressbar 1.13.2
- * http://jqueryui.com
+ * jQuery UI Progressbar 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/progressbar/#theming
+ * https://api.jqueryui.com/progressbar/#theming
  */
 .ui-progressbar {
 	height: 2em;
@@ -697,19 +688,18 @@ button.ui-button::-moz-focus-inner {
 .ui-progressbar .ui-progressbar-overlay {
 	background: url("data:image/gif;base64,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");
 	height: 100%;
-	-ms-filter: "alpha(opacity=25)"; /* support: IE8 */
 	opacity: 0.25;
 }
 .ui-progressbar-indeterminate .ui-progressbar-value {
 	background-image: none;
 }
 /*!
- * jQuery UI Resizable 1.13.2
- * http://jqueryui.com
+ * jQuery UI Resizable 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 .ui-resizable {
 	position: relative;
@@ -781,12 +771,12 @@ button.ui-button::-moz-focus-inner {
 	top: -5px;
 }
 /*!
- * jQuery UI Selectable 1.13.2
- * http://jqueryui.com
+ * jQuery UI Selectable 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 .ui-selectable {
 	touch-action: none;
@@ -797,14 +787,14 @@ button.ui-button::-moz-focus-inner {
 	border: 1px dotted black;
 }
 /*!
- * jQuery UI Selectmenu 1.13.2
- * http://jqueryui.com
+ * jQuery UI Selectmenu 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/selectmenu/#theming
+ * https://api.jqueryui.com/selectmenu/#theming
  */
 .ui-selectmenu-menu {
 	padding: 0;
@@ -847,25 +837,25 @@ button.ui-button::-moz-focus-inner {
 	margin-top: 0;
 }
 /*!
- * jQuery UI Sortable 1.13.2
- * http://jqueryui.com
+ * jQuery UI Sortable 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 .ui-sortable-handle {
 	touch-action: none;
 }
 /*!
- * jQuery UI Slider 1.13.2
- * http://jqueryui.com
+ * jQuery UI Slider 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/slider/#theming
+ * https://api.jqueryui.com/slider/#theming
  */
 .ui-slider {
 	position: relative;
@@ -886,12 +876,6 @@ button.ui-button::-moz-focus-inner {
 	display: block;
 	border: 0;
 	background-position: 0 0;
-}
-
-/* support: IE8 - See #6727 */
-.ui-slider.ui-state-disabled .ui-slider-handle,
-.ui-slider.ui-state-disabled .ui-slider-range {
-	filter: inherit;
 }
 
 .ui-slider-horizontal {
@@ -932,14 +916,14 @@ button.ui-button::-moz-focus-inner {
 	top: 0;
 }
 /*!
- * jQuery UI Spinner 1.13.2
- * http://jqueryui.com
+ * jQuery UI Spinner 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/spinner/#theming
+ * https://api.jqueryui.com/spinner/#theming
  */
 .ui-spinner {
 	position: relative;
@@ -984,14 +968,14 @@ button.ui-button::-moz-focus-inner {
 	bottom: 0;
 }
 /*!
- * jQuery UI Tabs 1.13.2
- * http://jqueryui.com
+ * jQuery UI Tabs 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/tabs/#theming
+ * https://api.jqueryui.com/tabs/#theming
  */
 .ui-tabs {
 	position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
@@ -1035,14 +1019,14 @@ button.ui-button::-moz-focus-inner {
 	background: none;
 }
 /*!
- * jQuery UI Tooltip 1.13.2
- * http://jqueryui.com
+ * jQuery UI Tooltip 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/tooltip/#theming
+ * https://api.jqueryui.com/tooltip/#theming
  */
 .ui-tooltip {
 	padding: 8px;
@@ -1054,26 +1038,26 @@ body .ui-tooltip {
 	border-width: 2px;
 }
 /*!
- * jQuery UI CSS Framework 1.13.2
- * http://jqueryui.com
+ * jQuery UI CSS Framework 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/category/theming/
+ * https://api.jqueryui.com/category/theming/
  */
 /*!
- * jQuery UI CSS Framework 1.13.2
- * http://jqueryui.com
+ * jQuery UI CSS Framework 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/category/theming/
+ * https://api.jqueryui.com/category/theming/
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/
+ * To view and modify this theme, visit https://jqueryui.com/themeroller/
  */
 
 
@@ -1237,18 +1221,13 @@ a.ui-button:active,
 .ui-widget-content .ui-priority-secondary,
 .ui-widget-header .ui-priority-secondary {
 	opacity: .7;
-	-ms-filter: "alpha(opacity=70)"; /* support: IE8 */
 	font-weight: normal;
 }
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
 	opacity: .35;
-	-ms-filter: "alpha(opacity=35)"; /* support: IE8 */
 	background-image: none;
-}
-.ui-state-disabled .ui-icon {
-	-ms-filter: "alpha(opacity=35)"; /* support: IE8 - See #6059 */
 }
 
 /* Icons
@@ -1503,20 +1482,19 @@ a.ui-button:active,
 .ui-widget-overlay {
 	background: #aaaaaa/*{bgColorOverlay}*/ /*{bgImgUrlOverlay}*/ /*{bgOverlayXPos}*/ /*{bgOverlayYPos}*/ /*{bgOverlayRepeat}*/;
 	opacity: .3/*{opacityOverlay}*/;
-	-ms-filter: "alpha(opacity=30)"/*{opacityFilterOverlay}*/; /* support: IE8 */
 }
 .ui-widget-shadow {
 	box-shadow: 0/*{offsetLeftShadow}*/ 0/*{offsetTopShadow}*/ 5px/*{thicknessShadow}*/ #666666/*{bgColorShadow}*/;
 }
 /*!
- * jQuery UI CSS Framework 1.13.2
- * http://jqueryui.com
+ * jQuery UI CSS Framework 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/category/theming/
+ * https://api.jqueryui.com/category/theming/
  */
 /*!
  * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
@@ -8239,11 +8217,11 @@ body {
   display: inline-block;
   color: #fff;
   border-radius: 3px 3px 0px 0px;
-  box-shadow: 0 0.5rem 0.8rem #00000080;
+  box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.5019607843);
 }
 
 .panels {
-  background: #fffffff6;
+  background: rgba(255, 255, 255, 0.9647058824);
   min-height: 200px;
   width: 100%;
   /* max-width:; */
