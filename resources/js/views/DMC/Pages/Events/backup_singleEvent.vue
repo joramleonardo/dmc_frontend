@@ -233,113 +233,20 @@
 
 <template>
     <div >
-        <div class="sub-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-sm-8">
-                        <div class="left-content">
-                        <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-4">
-                        <div class="right-icons">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <Header />
+        <header>
+            <Header />
+        </header>
 
         <main>
-            <section class="heading-page header-text" id="top">
+            <section class="blog_area single-post-area section-padding-single-event">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
-                        <h6>{{list_eventDetails.event_category}}</h6>
-                        <h2>{{list_eventDetails.event_title}}</h2>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="upcoming-meetings" id="meetings">
-                <div class="container">
-                    <div class="row">
-                        <!-- <div class="col-lg-12">
-                            <div class="section-heading">
-                                <h2>Upcoming Meetings</h2>
-                            </div>
-                        </div> -->
-                        <div class="col-lg-4">
-                            <div class="categories" style="margin-bottom: 25px;">
-                                <aside class="single_sidebar_widget tag_cloud_widget">
-                                    <h4 class="widget_title">Event Information</h4>
-                                    <ul class="list">
-                                        <li>
-                                            <span class="meta-title">Event Title:</span>
-                                            <br>
-                                            <span class="meta-sub">{{ list_eventDetails.event_title }}</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Description:</span>
-                                            <br>
-                                            <span class="meta-sub">{{ list_eventDetails.event_description }}</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Category:</span>
-                                            <br>
-                                            <span class="meta-sub">
-                                                <a href="#">
-                                                    {{ list_eventDetails.event_category }}
-                                                </a>
-                                            </span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Venue:</span>
-                                            <br>
-                                            <span class="meta-sub">{{ list_eventDetails.event_venue }}</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Date:</span>
-                                            <br>
-                                            <span class="meta-sub">{{ formatDate(list_eventDetails.event_date) }}</span>
-                                        </li> <br>
-                                        <li>
-                                            <span class="meta-title">Organizing Agency:</span>
-                                            <br>
-                                            <span class="meta-sub">
-                                                <a href="#">
-                                                    {{ list_eventDetails.event_organizingAgency }}
-                                                </a>
-                                            </span>
-                                        </li> <br><br>
-                                        <button class="genric-btn primary-border small" type="submit" @click="openRequestModal">
-                                            Request Copy
-                                        </button>
-
-                                    </ul>
-                                </aside>
-
-
-                            </div>
-
-                            <div class="categories" style="margin-bottom: 15px;">
-                                <RelatedEvents :albumId="album_id" />
-
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="event-item">
-                                        <p class="view-count mb-3">
+                        <div class="col-lg-8 posts-list">
+                            <div class="single-post">
+                                <h2 class="event-title">
+                                    {{list_eventDetails.event_title}}
+                                </h2>
+                                <p class="view-count mb-3">
                                 Views: {{ list_eventDetails.views_count || 0 }}
                                 </p>
                                 <div class="feature-img">
@@ -411,83 +318,65 @@
                                         </div>
                                     </div>
                                 </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="blog_right_sidebar">
+                                <aside class="single_sidebar_widget tag_cloud_widget">
+                                    <h4 class="widget_title">Event Information</h4>
+                                    <ul class="list">
+                                        <li>
+                                            <span class="meta-title">Event Title:</span>
+                                            <br>
+                                            <span class="meta-sub">{{ list_eventDetails.event_title }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Description:</span>
+                                            <br>
+                                            <span class="meta-sub">{{ list_eventDetails.event_description }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Category:</span>
+                                            <br>
+                                            <span class="meta-sub">
+                                                <a href="#">
+                                                    {{ list_eventDetails.event_category }}
+                                                </a>
+                                            </span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Venue:</span>
+                                            <br>
+                                            <span class="meta-sub">{{ list_eventDetails.event_venue }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Date:</span>
+                                            <br>
+                                            <span class="meta-sub">{{ formatDate(list_eventDetails.event_date) }}</span>
+                                        </li> <br>
+                                        <li>
+                                            <span class="meta-title">Organizing Agency:</span>
+                                            <br>
+                                            <span class="meta-sub">
+                                                <a href="#">
+                                                    {{ list_eventDetails.event_organizingAgency }}
+                                                </a>
+                                            </span>
+                                        </li> <br><br>
+                                        <button class="genric-btn primary-border small" type="submit" @click="openRequestModal">
+                                            Request Copy
+                                        </button>
 
-                                </div>
-                                <!-- <div class="col-lg-6">
-                                    <div class="meeting-item">
-                                        <div class="thumb">
-                                        <div class="price">
-                                            <span>$22.00</span>
-                                        </div>
-                                        <a href="meeting-details.html"><img  src="edu/assets/images/meeting-01.jpg" alt="New Lecturer Meeting"></a>
-                                        </div>
-                                        <div class="down-content">
-                                            <div class="date">
-                                                <h6>Nov <span>10</span></h6>
-                                            </div>
-                                            <a href="meeting-details.html"><h4>New Lecturers Meeting</h4></a>
-                                            <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                <div class="meeting-item">
-                                    <div class="thumb">
-                                    <div class="price">
-                                        <span>$36.00</span>
-                                    </div>
-                                    <a href="meeting-details.html"><img  src="edu/assets/images/meeting-02.jpg" alt="Online Teaching"></a>
-                                    </div>
-                                    <div class="down-content">
-                                    <div class="date">
-                                        <h6>Nov <span>24</span></h6>
-                                    </div>
-                                    <a href="meeting-details.html"><h4>Online Teaching Techniques</h4></a>
-                                    <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="col-lg-6">
-                                <div class="meeting-item">
-                                    <div class="thumb">
-                                    <div class="price">
-                                        <span>$14.00</span>
-                                    </div>
-                                    <a href="meeting-details.html"><img  src="edu/assets/images/meeting-03.jpg" alt="Higher Education"></a>
-                                    </div>
-                                    <div class="down-content">
-                                    <div class="date">
-                                        <h6>Nov <span>26</span></h6>
-                                    </div>
-                                    <a href="meeting-details.html"><h4>Higher Education Conference</h4></a>
-                                    <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="col-lg-6">
-                                <div class="meeting-item">
-                                    <div class="thumb">
-                                    <div class="price">
-                                        <span>$48.00</span>
-                                    </div>
-                                    <a href="meeting-details.html"><img  src="edu/assets/images/meeting-04.jpg" alt="Student Training"></a>
-                                    </div>
-                                    <div class="down-content">
-                                    <div class="date">
-                                        <h6>Nov <span>30</span></h6>
-                                    </div>
-                                    <a href="meeting-details.html"><h4>Student Training Meetup</h4></a>
-                                    <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
-                                    </div>
-                                </div>
-                                </div> -->
+                                    </ul>
+                                </aside>
+
+                                <TagClouds v-if="album_id" :albumId="album_id" />
+                                <RelatedEvents :albumId="album_id" />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
 
         </main>
 
@@ -507,17 +396,13 @@
             </div>
         </div>
 
+
     </div>
 
 
 </template>
 
 <style lang="css" scoped>
-    .event-item{
-        background-color: rgb(255, 255, 255);
-        border-radius: 20px;
-        padding: 40px;
-    }
 
     .photo-category{
         background: #0077b5;

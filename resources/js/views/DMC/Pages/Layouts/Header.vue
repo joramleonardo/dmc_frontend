@@ -29,11 +29,11 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <a href="#" class="logo">
+                        <a href="/" class="logo">
                             DMC
                         </a>
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="/">Home</a></li>
                             <li class="has-sub">
                                 <a href="javascript:void(0)">Browse</a>
                                 <ul class="sub-menu">
@@ -43,6 +43,7 @@
                                     <li><a href="#">Categories</a></li>
                                 </ul>
                             </li>
+                            <li class="scroll-to-section"><a href="/">Upcoming Events</a></li>
                             <li class="scroll-to-section"><a href="#">Contact Us</a></li>
                             <li class="scroll-to-section">
                                 <form @submit.prevent="performSearch" style="width: 300px;">

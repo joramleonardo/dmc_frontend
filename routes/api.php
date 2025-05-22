@@ -24,6 +24,11 @@ Route::get('/getRelatedEvents/{album_id}', [AssetsController::class, 'getRelated
 
 
 Route::get('/upcoming-events', [AssetsController::class, 'getUpcomingEvents']);
-Route::get('/getUpcomingEventById/{id}', [AssetsController::class, 'getUpcomingEventById']);
+Route::get('/upcoming-events/{id}', [AssetsController::class, 'getUpcomingEventById']);
+
+Route::get('/getPopularCategoriesWithEvents', [AssetsController::class, 'getPopularCategoriesWithEvents']);
 
 
+// api.php
+Route::get('/photos/by-album/{id}', [AssetsController::class, 'getPhotosByAlbumId']);
+Route::get('/videos/by-album/{id}', [AssetsController::class, 'getVideosByAlbumId']);

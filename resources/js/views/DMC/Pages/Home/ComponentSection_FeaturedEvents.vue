@@ -66,8 +66,6 @@ export default {
 
 
 <template>
-
-
     <div class="row">
         <div class="col-lg-12">
             <div class="section-heading">
@@ -80,17 +78,16 @@ export default {
                     <div class="image-container">
                         <img :src="'/storage/images/' + event.photo" :alt="event.event_title">
                         <div class="overlay">
-                            <h4 class="title">{{ event.event_title }}</h4>
+                            <!-- <h4 class="title">{{ event.event_title }}</h4> -->
+                             <router-link :to="`/single-event/${event.album_id}`" class="title">
+                                {{ event.event_title }}
+                            </router-link>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
 </template>
 
 

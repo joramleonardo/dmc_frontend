@@ -144,6 +144,7 @@ class AssetsController extends Controller
         return response()->json($event);
     }
 
+
     public function getPopularEvents(Request $request)
     {
         $data = DB::table('tbl_album')
@@ -396,8 +397,69 @@ class AssetsController extends Controller
     }
 
 
+    public function getPopularCategoriesWithEvents()
+    {
+        // Get top 3 most used categories
+        $topCategories = DB::table('tbl_album')
+            ->where('is_deleted', 0)
+            ->select('event_category', DB::raw('COUNT(*) as event_count'))
+            ->groupBy('event_category')
+            ->orderByDesc('event_count')
+            ->limit(3)
+            ->pluck('event_category');
+
+        $data = [];
+
+        foreach ($topCategories as $category) {
+            $events = DB::table('tbl_album')
+                ->leftJoin('tbl_photo', 'tbl_album.album_id', '=', 'tbl_photo.album_id')
+                ->where('tbl_album.event_category', $category)
+                ->where('tbl_album.is_deleted', 0)
+                ->whereNotNull('tbl_album.album_id')
+                ->select([
+                    'tbl_album.album_id',
+                    'tbl_album.event_title',
+                    'tbl_album.event_date',
+                    'tbl_album.event_category',
+                    DB::raw('(SELECT photo_fileName FROM tbl_photo WHERE tbl_photo.album_id = tbl_album.album_id ORDER BY created_at ASC LIMIT 1) as thumbnail')
+                ])
+                ->groupBy('tbl_album.album_id')
+                ->limit(10)
+                ->get();
+
+            $data[] = [
+                'category' => $category,
+                'events' => $events
+            ];
+        }
+
+        return response()->json($data);
+    }
 
 
+    public function getPhotosByAlbumId($id)
+    {
+        $photos = DB::table('tbl_photo')
+            ->where('album_id', $id)
+            ->select('photo_fileName')
+            ->orderBy('created_at')
+            ->limit(4)
+            ->get();
+
+        return response()->json($photos);
+    }
+
+    public function getVideosByAlbumId($id)
+    {
+        $videos = DB::table('tbl_video')
+            ->where('album_id', $id)
+            ->select('video_link')
+            ->orderBy('created_at')
+            ->limit(1)
+            ->get();
+
+        return response()->json($videos);
+    }
 
 
 

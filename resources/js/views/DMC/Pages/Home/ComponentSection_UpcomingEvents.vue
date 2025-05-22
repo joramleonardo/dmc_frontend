@@ -13,11 +13,18 @@
         mounted() {
             this.loadUpcomingEvents();
         },
+        computed: {
+            nearestEvent() {
+                return this.events.length > 0 ? this.events[0] : null;
+            }
+        },
         methods: {
             async loadUpcomingEvents() {
                 try {
                     const response = await getUpcomingEvents();
                     this.events = response.data;
+                    console.log("Upcoming events loaded successfully", this.events);
+                    console.log(this.events.length);
                 } catch (error) {
                     console.error("Failed to load upcoming events", error);
                 }
@@ -35,67 +42,50 @@
 
 
     <div class="row">
-        <div class="col-lg-6 align-self-center">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Upcoming Events</h2>
-                </div>
-                <div class="col-lg-6">
-                    <!-- <div class="row">
-                        <div class="col-12">
-                        <div class="count-area-content percentage">
-                            <div class="count-digit">94</div>
-                            <div class="count-title">Succesed Students</div>
-                        </div>
-                        </div>
-                        <div class="col-12">
-                        <div class="count-area-content">
-                            <div class="count-digit">126</div>
-                            <div class="count-title">Current Teachers</div>
-                        </div>
-                        </div>
-                    </div> -->
-                </div>
-                <div class="col-lg-6">
-                    <!-- <div class="row">
-                        <div class="col-12">
-                        <div class="count-area-content new-students">
-                            <div class="count-digit">2345</div>
-                            <div class="count-title">New Students</div>
-                        </div>
-                        </div>
-                        <div class="col-12">
-                        <div class="count-area-content">
-                            <div class="count-digit">32</div>
-                            <div class="count-title">Awards</div>
-                        </div>
-                        </div>
-                    </div> -->
-                </div>
+        <div class="col-lg-12">
+            <div class="section-heading">
+                <h2>Upcoming Events</h2>
             </div>
         </div>
         <div class="col-lg-6">
+            <div class="item">
+                <h3>{{ nearestEvent.event_title }}</h3>
+                <p>{{ formatDate(nearestEvent.event_date) }}</p>
+                <div class="main-button-red">
+                    <img :src="`/storage/images/${nearestEvent.event_banner}`" alt="Nearest Upcoming Event Banner" class="nearest-event-image"/>
+                </div>
+            </div>
+        </div>
 
-        <section class="accordion accordion--radio">
-            <div class="tab">
-                <input type="radio" name="accordion-2" id="rd1">
-                <label for="rd1" class="tab__label">Radio</label>
-                <div class="tab__content">
-                <p>If you want to have only one tab open, you can use <code>&lt;input type="checkbox"&gt;</code>.</p>
+        <div class="col-lg-6">
+
+
+            <section class="accordion accordion--radio">
+                <!-- <div class="tab" v-for="(event, index) in events" :key="event.id || index"> -->
+                <div class="tab" v-for="(event, index) in events.filter((e, i) => i !== 0)" :key="event.id || index">
+                    <input type="radio" name="accordion-2" :id="`rd${index + 1}`"/>
+                    <label class="tab__label" :for="`rd${index + 1}`" >
+                        {{ event.event_title }}
+                    </label>
+                    <div class="tab__content">
+                        <p>{{ event.event_description }}</p>
+                        <p class="content-date"><strong>Date:</strong> {{ formatDate(event.event_date) }}</p>
+
+                        <div class="scroll-to-section">
+                             <router-link :to="`/upcoming-single-event/${event.id}`" class="btn-small">
+                                View Event Details
+                            </router-link>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-            <div class="tab">
-                <input type="radio" name="accordion-2" id="rd2">
-                <label for="rd2" class="tab__label">Open single</label>
-                <div class="tab__content">
-                <p>But if you wanna close the opened tab, you must add a "close" button somewhere, like the one below, that is just another styled radio input.</p>
+
+                <div class="tab">
+                    <input type="radio" name="accordion-2" id="rd-close" />
+                    <label for="rd-close" class="tab__close">&times;</label>
                 </div>
-            </div>
-            <div class="tab">
-                <input type="radio" name="accordion-2" id="rd3">
-                <label for="rd3" class="tab__close">Close open tab &times;</label>
-            </div>
-        </section>
+            </section>
+
 
 
         </div>
@@ -104,8 +94,35 @@
 
 <style scoped>
 
+    .nearest-event h4 {
+        font-size: 26px;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+    .nearest-event-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+        .btn-small {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            background-color: #2563eb; /* Tailwind's blue-600 */
+            color: white;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .btn-small:hover {
+            background-color: #1d4ed8; /* Tailwind's blue-700 */
+        }
+
         section{
-            background-color: #a12c2f;
+            background-color: #11253b;
         }
         /* Core styles/functionality */
         .tab {
@@ -121,6 +138,15 @@
             overflow: hidden;
             transition: all 0.35s;
         }
+
+        .tab__content p{
+            color: white;
+            font-weight: 200;
+        }
+        .content-date{
+            font-style: italic;
+            font-size: 11px;
+        }
         .tab input:checked ~ .tab__content {
             max-height: 10rem;
         }
@@ -128,16 +154,17 @@
         /* Visual styles */
         .accordion {
             color: var(--theme);
-            border: 2px solid;
+            border: 1px solid;
             border-radius: 0.5rem;
             overflow: hidden;
         }
         .tab__label,
         .tab__close {
-        display: flex;
+            display: flex;
             color: white;
             background: var(--theme);
             cursor: pointer;
+            font-weight: 600;
         }
         .tab__label {
             justify-content: space-between;

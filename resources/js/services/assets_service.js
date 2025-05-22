@@ -61,3 +61,20 @@ export function getUpcomingEvents() {
 export function getUpcomingEventById(id) {
     return http().get(`/getUpcomingEventById/${id}`);
 }
+
+
+export function getSingleUpcomingEvent(id) {
+    return http().get(`/upcoming-events/${id}`);
+}
+
+export function getPopularCategoriesWithEvents() {
+    return http().get('/getPopularCategoriesWithEvents');
+}
+
+export function getPhotosByAlbumId(albumId) {
+    return http().get(`/photos/by-album/${albumId}`);
+}
+
+export function getVideosByAlbumId(albumId) {
+    return http().get(`/videos/by-album/${albumId}`);
+}

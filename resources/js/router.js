@@ -11,7 +11,7 @@ import Landing_SingleEvent from './views/DMC/Pages/Events/ComponentSection_Singl
 import Events from './views/DMC/Pages/Events/ComponentSection_Events.vue';
 import EventsByTags from './views/DMC/Pages/Events/ComponentSection_EventsByTags.vue';
 import EventsByCategory from './views/DMC/Pages/Events/ComponentSection_EventsByCategory.vue';
-import UpcomingSingleEvent from './views/DMC/Pages/Events/ComponentSection_UpcomingSingleEvent.vue';
+import UpcomingSingleEvent from './views/DMC/Pages/Upcoming/Single_Upcoming_Event.vue';
 
 
 import PhotoGallery from './views/DMC/Pages/Photos/ComponentSection_PhotoGallery.vue';
