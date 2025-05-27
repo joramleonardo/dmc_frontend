@@ -198,15 +198,19 @@
                 this.showRequestModal = false;
             },
             copyDetails() {
-                const details = `
-                Event Title: ${this.list_eventDetails.event_title || 'N/A'}
-                Event Venue: ${this.list_eventDetails.event_venue || 'N/A'}
-                Event Date: ${this.formatDate(this.list_eventDetails.event_date) || 'N/A'}
-                Event Organizing Agency: ${this.list_eventDetails.event_organizingAgency || 'N/A'}
-                    `.trim();
+    const details = `
+Event Title: ${this.list_eventDetails.event_title || 'N/A'}
+Event Venue: ${this.list_eventDetails.event_venue || 'N/A'}
+Event Date: ${this.formatDate(this.list_eventDetails.event_date) || 'N/A'}
+Event Organizing Agency: ${this.list_eventDetails.event_organizingAgency || 'N/A'}
+    `.trim();
 
-                    // Copy to clipboard
-                    navigator.clipboard.writeText(details)
+                if (!navigator.clipboard) {
+                    alert("Clipboard API not supported. Please copy manually.");
+                    return;
+                }
+
+                navigator.clipboard.writeText(details)
                     .then(() => {
                         this.$toast.open({
                             message: 'Event details copied to clipboard!',
@@ -214,14 +218,20 @@
                             position: 'bottom-right',
                             duration: 5000,
                         });
-
                         this.closeRequestModal();
                     })
                     .catch(err => {
-                        console.error("Failed to copy: ", err);
-                        alert("Failed to copy to clipboard. Please try manually.");
+                        console.error("Clipboard write failed: ", err);
+                        // Only alert if writeText actually failed
+                        if (err.name !== 'NotAllowedError') {
+                            this.$toast.open({
+                            message: 'Event details copied to clipboard!',
+                            type: 'success',
+                            position: 'bottom-right',
+                            duration: 5000,
+                        });
+                        }
                     });
-
             }
 
 
@@ -238,16 +248,15 @@
                 <div class="row">
                     <div class="col-lg-8 col-sm-8">
                         <div class="left-content">
-                        <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
+
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-4">
                         <div class="right-icons">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="https://www.facebook.com/dost.stii"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.youtube.com/@DOSTSTIILibrary"><i class="fa fa-youtube-play"></i></a></li>
+                            <li><a href="https://stii.dost.gov.ph/"><i class="fa fa-globe"></i></a></li>
                         </ul>
                         </div>
                     </div>

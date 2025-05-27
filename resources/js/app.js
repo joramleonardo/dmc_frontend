@@ -4,14 +4,14 @@ import router from './router';
 
 
 // import 'bootstrap-vue/dist/bootstrap-vue.css';
-// import 'vue-toast-notification/dist/theme-sugar.css';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 
 // import BootstrapVue from 'bootstrap-vue';
-// import VueToast from 'vue-toast-notification';
+import VueToast from 'vue-toast-notification';
 
 // Vue.use(BootstrapVue);
-// Vue.use(VueToast);
+Vue.use(VueToast);
 
 new Vue({
     el: '#app',

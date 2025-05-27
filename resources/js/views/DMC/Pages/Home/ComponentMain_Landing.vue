@@ -69,16 +69,15 @@
                 <div class="row">
                     <div class="col-lg-8 col-sm-8">
                         <div class="left-content">
-                        <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
+
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-4">
                         <div class="right-icons">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="https://www.facebook.com/dost.stii"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.youtube.com/@DOSTSTIILibrary"><i class="fa fa-youtube-play"></i></a></li>
+                            <li><a href="https://stii.dost.gov.ph/"><i class="fa fa-globe"></i></a></li>
                         </ul>
                         </div>
                     </div>
